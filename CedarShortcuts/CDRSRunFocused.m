@@ -46,6 +46,8 @@ static NSString *__lastFocusedRun = nil;
 }
 
 - (BOOL)_run:(NSString *)filePathAndLineNumber {
+    if (!filePathAndLineNumber) return NO;
+
     [IDELaunchSession_Customize customizeNextLaunchSession:^(id launchSession){
         NSLog(@"Running spec: %@", filePathAndLineNumber);
 
