@@ -16,7 +16,7 @@
 static CustomizeBlock __customizeBlock = nil;
 
 + (void)setUp {
-    static BOOL done = nil;
+    static BOOL done = NO;
     if (!done) {
         done = YES;
         SEL selector = @selector(initWithExecutionEnvironment:launchParameters:runnableDisplayName:runnableType:runDestination:);
@@ -25,6 +25,7 @@ static CustomizeBlock __customizeBlock = nil;
 }
 
 + (void)customizeNextLaunchSession:(CustomizeBlock)block {
+    [__customizeBlock release];
     __customizeBlock = [block retain];
 }
 
