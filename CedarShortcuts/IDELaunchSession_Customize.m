@@ -26,7 +26,7 @@ static CustomizeBlock __customizeBlock = nil;
 
 + (void)customizeNextLaunchSession:(CustomizeBlock)block {
     [__customizeBlock release];
-    __customizeBlock = [block retain];
+    __customizeBlock = [block copy];
 }
 
 - (id)INIT_METHOD(withCustomizeBlock) {
