@@ -20,5 +20,10 @@ with your cursor and use a shortcut.
 * Restart Xcode
 
 * Use `Cmd+KEY` to run
-  - `u` becomes `Cmd+u`
-  - `U` becomes `Cmd+Shift+u`
+  - `u`  -> `cmd+u`
+  - `U`  -> `cmd+shift+u`
+  - `f1` -> `cmd+f1`
+  - `F1` -> `cmd+shift+f1`
+
+(Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from
+`~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`)

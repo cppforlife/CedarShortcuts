@@ -14,5 +14,5 @@ typedef enum {
 
 - (id)initWithFilePath:(NSString *)filePath;
 
-- (CDRSShortcut)commandForShortcut:(NSString *)key;
+- (CDRSShortcut)commandForShortcut:(NSString *)key shiftKey:(BOOL)shiftKey;
 @end

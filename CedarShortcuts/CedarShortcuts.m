@@ -43,19 +43,24 @@
     self.keyPressMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^ NSEvent* (NSEvent *event) {
         if (event.modifierFlags & NSCommandKeyMask) {
             id workspace = self._currentWorkspace;
-            if (workspace && [self _handleKeyPress:event.charactersIgnoringModifiers workspace:workspace])
+            if (workspace && [self _handleKeyPress:event workspace:workspace])
                 return nil;
         }
         return event;
     }];
 }
 
-- (BOOL)_handleKeyPress:(NSString *)key workspace:(id)workspace {
+- (BOOL)_handleKeyPress:(NSEvent *)event workspace:(id)workspace {
+    CDRSShortcut shortcut =
+        [self.shortcutsFile
+            commandForShortcut:event.charactersIgnoringModifiers
+                      shiftKey:(event.modifierFlags & NSShiftKeyMask) != 0];
+
     CDRSRunFocused *command =
         [[[CDRSRunFocused alloc]
-          initWithWorkspaceController:self._currentWorkspaceController] autorelease];
+            initWithWorkspaceController:self._currentWorkspaceController] autorelease];
 
-    switch ([self.shortcutsFile commandForShortcut:key]) {
+    switch (shortcut) {
         case CDRSShortcutNotMatch: return NO;
         case CDRSShortcutRunFocused: return [command runFocused];
         case CDRSShortcutRunFocusedLast: return [command runFocusedLast];
