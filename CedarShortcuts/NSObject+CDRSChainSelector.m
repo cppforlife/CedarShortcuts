@@ -1,12 +1,12 @@
-#import "NSObject+ChainSelector.h"
+#import "NSObject+CDRSChainSelector.h"
 #import <objc/runtime.h>
 
 #define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
 
-@implementation NSObject (ChainSelector)
+@implementation NSObject (CDRSChainSelector)
 
 // Based on http://blog.walkingsmarts.com/objective-c-method-swizzling-rails-style-a-k-a-alias-method-chain/
-+ (void)chainSelector:(SEL)selector inClass:(Class)klass prefix:(NSString *)prefix {
++ (void)cdrs_chainSelector:(SEL)selector inClass:(Class)klass prefix:(NSString *)prefix {
     NSString *selectorStr = NSStringFromSelector(selector);
     NSString *prefixCapitalized = [prefix
         stringByReplacingCharactersInRange:NSMakeRange(0, 1)

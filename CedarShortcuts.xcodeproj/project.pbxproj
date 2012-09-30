@@ -11,8 +11,8 @@
 		960FA0931605819F00923A87 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0921605819F00923A87 /* CoreFoundation.framework */; };
 		960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 960FA0A1160584AC00923A87 /* CedarShortcuts.m */; };
 		960FA0A51605858E00923A87 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0A31605858400923A87 /* AppKit.framework */; };
-		9677A43D1612C65200A4708D /* NSObject+ChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+ChainSelector.m */; };
-		9677A4401612C6D700A4708D /* IDELaunchSession_Customize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_Customize.m */; };
+		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
+		9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */; };
 		96D893941605C92700EA8AD3 /* CDRSShortcutsFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D893931605C92700EA8AD3 /* CDRSShortcutsFile.m */; };
 /* End PBXBuildFile section */
 
@@ -25,10 +25,10 @@
 		960FA0A0160584AC00923A87 /* CedarShortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CedarShortcuts.h; sourceTree = "<group>"; };
 		960FA0A1160584AC00923A87 /* CedarShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CedarShortcuts.m; sourceTree = "<group>"; };
 		960FA0A31605858400923A87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		9677A43A1612C61E00A4708D /* NSObject+ChainSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ChainSelector.h"; sourceTree = "<group>"; };
-		9677A43C1612C65200A4708D /* NSObject+ChainSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ChainSelector.m"; sourceTree = "<group>"; };
-		9677A43E1612C6D700A4708D /* IDELaunchSession_Customize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDELaunchSession_Customize.h; sourceTree = "<group>"; };
-		9677A43F1612C6D700A4708D /* IDELaunchSession_Customize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDELaunchSession_Customize.m; sourceTree = "<group>"; };
+		9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDRSChainSelector.h"; sourceTree = "<group>"; };
+		9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDRSChainSelector.m"; sourceTree = "<group>"; };
+		9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDELaunchSession_CDRSCustomize.h; sourceTree = "<group>"; };
+		9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDELaunchSession_CDRSCustomize.m; sourceTree = "<group>"; };
 		96D893921605C92700EA8AD3 /* CDRSShortcutsFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSShortcutsFile.h; sourceTree = "<group>"; };
 		96D893931605C92700EA8AD3 /* CDRSShortcutsFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSShortcutsFile.m; sourceTree = "<group>"; };
 		96FF419916060A3300B461B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -84,10 +84,10 @@
 				96D893931605C92700EA8AD3 /* CDRSShortcutsFile.m */,
 				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
 				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
-				9677A43A1612C61E00A4708D /* NSObject+ChainSelector.h */,
-				9677A43C1612C65200A4708D /* NSObject+ChainSelector.m */,
-				9677A43E1612C6D700A4708D /* IDELaunchSession_Customize.h */,
-				9677A43F1612C6D700A4708D /* IDELaunchSession_Customize.m */,
+				9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */,
+				9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */,
+				9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */,
+				9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */,
 			);
 			path = CedarShortcuts;
 			sourceTree = "<group>";
@@ -152,8 +152,8 @@
 			files = (
 				960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */,
 				96D893941605C92700EA8AD3 /* CDRSShortcutsFile.m in Sources */,
-				9677A43D1612C65200A4708D /* NSObject+ChainSelector.m in Sources */,
-				9677A4401612C6D700A4708D /* IDELaunchSession_Customize.m in Sources */,
+				9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */,
+				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

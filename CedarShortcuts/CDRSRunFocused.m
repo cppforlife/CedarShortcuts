@@ -1,9 +1,9 @@
 #import "CDRSRunFocused.h"
-#import "IDELaunchSession_Customize.h"
+#import "IDELaunchSession_CDRSCustomize.h"
 
 #define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
 
-@interface CDRSRunFocused (ClassDump)
+@interface CDRSRunFocused (CDRSClassDump)
 - (id)editor;
 - (id)editorArea;
 - (id)primaryEditorContext;
@@ -21,7 +21,7 @@
 - (id)initWithWorkspaceController:(id)workspaceController {
     if (self = [super init]) {
         self.workspaceController = workspaceController;
-        [IDELaunchSession_Customize setUp];
+        [IDELaunchSession_CDRSCustomize cdrs_setUp];
     }
     return self;
 }
@@ -48,7 +48,7 @@ static NSString *__lastFocusedRun = nil;
 - (BOOL)_run:(NSString *)filePathAndLineNumber {
     if (!filePathAndLineNumber) return NO;
 
-    [IDELaunchSession_Customize customizeNextLaunchSession:^(id launchSession){
+    [IDELaunchSession_CDRSCustomize cdrs_customizeNextLaunchSession:^(id launchSession){
         NSLog(@"Running spec: %@", filePathAndLineNumber);
 
         // retain then release since it could be itself
