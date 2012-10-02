@@ -3,12 +3,21 @@
 
 #define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
 
+static NSString *CDRSRunFocused_EnvironmentVariableName = @"CEDAR_SPEC_FILE";
+
 @interface CDRSRunFocused (CDRSClassDump)
 - (id)editor;
 - (id)editorArea;
 - (id)primaryEditorContext;
 - (id)sourceCodeDocument;
 - (long long)_currentOneBasedLineNubmer;
+
+- (id)runContextManager;
+- (id)activeRunContext;
+
+- (BOOL)isTestable;
+- (id)testingEnvironmentVariables;
+- (id)setTestingEnvironmentVariables:(NSDictionary *)vars;
 @end
 
 @interface CDRSRunFocused ()
@@ -56,11 +65,23 @@ static NSString *__lastFocusedRun = nil;
         [__lastFocusedRun release];
         __lastFocusedRun = filePathAndLineNumber;
 
-        id env = [[launchSession launchParameters] environmentVariables];
-        [env setObject:filePathAndLineNumber forKey:@"CEDAR_SPEC_FILE"];
+        id params = [launchSession launchParameters];
+
+        // Used with 'Run' context
+        id runEnv = [params environmentVariables];
+        [runEnv setObject:filePathAndLineNumber forKey:CDRSRunFocused_EnvironmentVariableName];
+
+        // Used with 'Test' context
+        NSMutableDictionary *testEnv = [[params testingEnvironmentVariables] mutableCopy];
+        [testEnv setObject:filePathAndLineNumber forKey:CDRSRunFocused_EnvironmentVariableName];
+        [params setTestingEnvironmentVariables:testEnv];
     }];
 
-    [NSApp sendAction:@selector(runActiveRunContext:) to:nil from:nil];
+    if ([self._currentScheme isTestable]) {
+        [NSApp sendAction:@selector(testActiveRunContext:) to:nil from:nil];
+    } else {
+        [NSApp sendAction:@selector(runActiveRunContext:) to:nil from:nil];
+    }
     return YES;
 }
 
@@ -86,5 +107,11 @@ static NSString *__lastFocusedRun = nil;
 - (id)_currentSourceCodeDocument {
     // IDESourceCodeDocument < IDEEditorDocument
     return [self._currentSourceCodeEditor sourceCodeDocument];
+}
+
+- (id)_currentScheme {
+    id workspace = [self.workspaceController valueForKey:@"_workspace"];
+    id runContextManager = [workspace runContextManager];       // IDEWorkspace
+    return [runContextManager activeRunContext];                // IDEScheme
 }
 @end
