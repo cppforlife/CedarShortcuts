@@ -6,7 +6,7 @@
 @interface CDRSRunFocused (CDRSClassDump)
 - (id)editor;
 - (id)editorArea;
-- (id)primaryEditorContext;
+- (id)lastActiveEditorContext;
 - (id)sourceCodeDocument;
 - (long long)_currentOneBasedLineNubmer;
 
@@ -91,7 +91,7 @@ static NSString *__lastFocusedRun = nil;
 
 - (id)_currentSourceCodeEditor {
     id editorArea = [self._currentWorkspaceController editorArea];  // IDEEditorArea
-    id editorContext = [editorArea primaryEditorContext];           // IDEEditorContext
+    id editorContext = [editorArea lastActiveEditorContext];        // IDEEditorContext
     return [editorContext editor];                                  // IDESourceCodeEditor
 }
 
