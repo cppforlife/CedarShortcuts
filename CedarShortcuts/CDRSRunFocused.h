@@ -1,11 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
-@interface CDRSRunFocused : NSObject {
-    id _workspaceController;
-}
-
-- (id)initWithWorkspaceController:(id)workspaceController;
-- (BOOL)runFocused;
-- (BOOL)runFocusedLast;
+@interface CDRSRunFocused : NSObject
+- (BOOL)runFocusedSpec;
 - (BOOL)runFocusedFile;
+- (BOOL)runFocusedLast;
 @end

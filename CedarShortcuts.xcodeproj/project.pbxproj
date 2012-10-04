@@ -11,6 +11,7 @@
 		960FA0931605819F00923A87 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0921605819F00923A87 /* CoreFoundation.framework */; };
 		960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 960FA0A1160584AC00923A87 /* CedarShortcuts.m */; };
 		960FA0A51605858E00923A87 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0A31605858400923A87 /* AppKit.framework */; };
+		9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */; };
 		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
 		9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,8 @@
 		960FA0A1160584AC00923A87 /* CedarShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CedarShortcuts.m; sourceTree = "<group>"; };
 		960FA0A31605858400923A87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		96387016161816A500BE29E7 /* clean.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = "<group>"; };
+		9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSRunFocusedMenu.h; sourceTree = "<group>"; };
+		9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSRunFocusedMenu.m; sourceTree = "<group>"; };
 		9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDRSChainSelector.h"; sourceTree = "<group>"; };
 		9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDRSChainSelector.m"; sourceTree = "<group>"; };
 		9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDELaunchSession_CDRSCustomize.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 			children = (
 				960FA0A0160584AC00923A87 /* CedarShortcuts.h */,
 				960FA0A1160584AC00923A87 /* CedarShortcuts.m */,
+				9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */,
+				9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */,
 				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
 				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
 				9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */,
@@ -180,6 +185,7 @@
 				9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */,
 				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
+				9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

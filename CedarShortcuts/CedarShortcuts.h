@@ -1,10 +1,10 @@
 #import <Cocoa/Cocoa.h>
 
-@class CDRSShortcutsFile;
+@class CDRSRunFocusedMenu;
 
 @interface CedarShortcuts : NSObject {
+    CDRSRunFocusedMenu *_runFocusedMenu;
 }
 
 + (void)pluginDidLoad:(NSBundle *)plugin;
-
 @end

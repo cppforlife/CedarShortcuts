@@ -15,7 +15,7 @@
 @implementation IDELaunchSession_CDRSCustomize
 static CDRSCustomizeBlock __customizeBlock = nil;
 
-+ (void)cdrs_setUp {
++ (void)_setUp {
     static BOOL done = NO;
     if (!done) {
         done = YES;
@@ -24,7 +24,8 @@ static CDRSCustomizeBlock __customizeBlock = nil;
     }
 }
 
-+ (void)cdrs_customizeNextLaunchSession:(CDRSCustomizeBlock)block {
++ (void)customizeNextLaunchSession:(CDRSCustomizeBlock)block {
+    [self _setUp];
     [__customizeBlock release];
     __customizeBlock = [block copy];
 }
