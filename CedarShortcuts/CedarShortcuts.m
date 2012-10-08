@@ -1,12 +1,14 @@
 #import "CedarShortcuts.h"
 #import "CDRSRunFocusedMenu.h"
+#import "CDRSEditMenu.h"
 
 @interface CedarShortcuts ()
 @property (nonatomic, retain) CDRSRunFocusedMenu *runFocusedMenu;
+@property (nonatomic, retain) CDRSEditMenu *editMenu;
 @end
 
 @implementation CedarShortcuts
-@synthesize runFocusedMenu = _runFocusedMenu;
+@synthesize runFocusedMenu = _runFocusedMenu, editMenu = _editMenu;
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
 	static id sharedPlugin = nil;
@@ -30,6 +32,7 @@
 
 - (void)dealloc {
     [_runFocusedMenu release];
+    [_editMenu release];
     [super dealloc];
 }
 
@@ -41,5 +44,8 @@
 
     self.runFocusedMenu = [[[CDRSRunFocusedMenu alloc] init] autorelease];
     [self.runFocusedMenu attach];
+
+    self.editMenu = [[[CDRSEditMenu alloc] init] autorelease];
+    [self.editMenu attach];
 }
 @end

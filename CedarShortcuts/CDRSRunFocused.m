@@ -1,12 +1,10 @@
 #import "CDRSRunFocused.h"
 #import "IDELaunchSession_CDRSCustomize.h"
+#import "CDRSXcode.h"
 
 #define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
 
 @interface CDRSRunFocused (CDRSClassDump)
-- (id)editor;
-- (id)editorArea;
-- (id)lastActiveEditorContext;
 - (id)sourceCodeDocument;
 - (long long)_currentOneBasedLineNubmer;
 
@@ -72,36 +70,18 @@ static NSString *__lastFocusedRun = nil;
 }
 
 - (long long)_currentLineNumber {
-    return [self._currentSourceCodeEditor _currentOneBasedLineNubmer];
+    return [[CDRSXcode currentSourceCodeEditor] _currentOneBasedLineNubmer];
 }
 
 #pragma mark - Workspace
 
-- (id)_currentWorkspaceController {
-    id workspaceController = [[NSApp keyWindow] windowController];
-    if ([workspaceController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
-        return workspaceController;
-    }
-    return nil;
-}
-
-- (id)_currentWorkspace {
-    return [self._currentWorkspaceController valueForKeyPath:@"_workspace"];
-}
-
-- (id)_currentSourceCodeEditor {
-    id editorArea = [self._currentWorkspaceController editorArea];  // IDEEditorArea
-    id editorContext = [editorArea lastActiveEditorContext];        // IDEEditorContext
-    return [editorContext editor];                                  // IDESourceCodeEditor
-}
-
 - (id)_currentSourceCodeDocument {
     // IDESourceCodeDocument < IDEEditorDocument
-    return [self._currentSourceCodeEditor sourceCodeDocument];
+    return [[CDRSXcode currentSourceCodeEditor] sourceCodeDocument];
 }
 
 - (id)_currentScheme {
-    id workspace = [self._currentWorkspaceController valueForKey:@"_workspace"];
+    id workspace = [[CDRSXcode currentWorkspaceController] valueForKey:@"_workspace"];
     id runContextManager = [workspace runContextManager];           // IDEWorkspace
     return [runContextManager activeRunContext];                    // IDEScheme
 }

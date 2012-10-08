@@ -12,8 +12,11 @@
 		960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 960FA0A1160584AC00923A87 /* CedarShortcuts.m */; };
 		960FA0A51605858E00923A87 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0A31605858400923A87 /* AppKit.framework */; };
 		9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */; };
+		96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 96593EE616226AA1009C7979 /* CDRSInsertImport.m */; };
 		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
 		9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */; };
+		969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 969FAA5116224F4700E48B0A /* CDRSEditMenu.m */; };
+		96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB4E4216227C4E00743C95 /* CDRSXcode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +41,16 @@
 		96387016161816A500BE29E7 /* clean.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = "<group>"; };
 		9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSRunFocusedMenu.h; sourceTree = "<group>"; };
 		9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSRunFocusedMenu.m; sourceTree = "<group>"; };
+		96593EE516226AA1009C7979 /* CDRSInsertImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSInsertImport.h; sourceTree = "<group>"; };
+		96593EE616226AA1009C7979 /* CDRSInsertImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSInsertImport.m; sourceTree = "<group>"; };
 		9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDRSChainSelector.h"; sourceTree = "<group>"; };
 		9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDRSChainSelector.m"; sourceTree = "<group>"; };
 		9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDELaunchSession_CDRSCustomize.h; sourceTree = "<group>"; };
 		9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDELaunchSession_CDRSCustomize.m; sourceTree = "<group>"; };
+		969FAA5016224F4700E48B0A /* CDRSEditMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSEditMenu.h; sourceTree = "<group>"; };
+		969FAA5116224F4700E48B0A /* CDRSEditMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSEditMenu.m; sourceTree = "<group>"; };
+		96DB4E4116227C4E00743C95 /* CDRSXcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSXcode.h; sourceTree = "<group>"; };
+		96DB4E4216227C4E00743C95 /* CDRSXcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSXcode.m; sourceTree = "<group>"; };
 		96FF419916060A3300B461B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +67,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9608A8FB1622754500763892 /* Menu Additions */ = {
+			isa = PBXGroup;
+			children = (
+				9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */,
+				9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */,
+				969FAA5016224F4700E48B0A /* CDRSEditMenu.h */,
+				969FAA5116224F4700E48B0A /* CDRSEditMenu.m */,
+			);
+			name = "Menu Additions";
+			sourceTree = "<group>";
+		};
+		9608A8FD1622755B00763892 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
+				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
+				96593EE516226AA1009C7979 /* CDRSInsertImport.h */,
+				96593EE616226AA1009C7979 /* CDRSInsertImport.m */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		9608A8FE1622757F00763892 /* Xcode Additions */ = {
+			isa = PBXGroup;
+			children = (
+				9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */,
+				9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */,
+			);
+			name = "Xcode Additions";
+			sourceTree = "<group>";
+		};
 		960FA0841605819F00923A87 = {
 			isa = PBXGroup;
 			children = (
@@ -91,14 +131,12 @@
 			children = (
 				960FA0A0160584AC00923A87 /* CedarShortcuts.h */,
 				960FA0A1160584AC00923A87 /* CedarShortcuts.m */,
-				9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */,
-				9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */,
-				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
-				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
-				9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */,
-				9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */,
-				9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */,
-				9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */,
+				96DB4E4116227C4E00743C95 /* CDRSXcode.h */,
+				96DB4E4216227C4E00743C95 /* CDRSXcode.m */,
+				9608A8FB1622754500763892 /* Menu Additions */,
+				9608A8FD1622755B00763892 /* Actions */,
+				9608A8FE1622757F00763892 /* Xcode Additions */,
+				96DB4E451622824600743C95 /* Utils */,
 			);
 			path = CedarShortcuts;
 			sourceTree = "<group>";
@@ -111,6 +149,15 @@
 			);
 			name = "Supporting Files";
 			path = CedarShortcuts;
+			sourceTree = "<group>";
+		};
+		96DB4E451622824600743C95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */,
+				9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +233,9 @@
 				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
 				9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */,
+				969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */,
+				96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */,
+				96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
