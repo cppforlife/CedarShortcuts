@@ -1,11 +1,11 @@
 #import <Cocoa/Cocoa.h>
 
-@class CDRSRunFocusedMenu, CDRSEditMenu, CDRSOpenAlternateMenu;
+@class CDRSRunFocusedMenu, CDRSOpenAlternateMenu, CDRSEditMenu;
 
 @interface CedarShortcuts : NSObject {
     CDRSRunFocusedMenu *_runFocusedMenu;
-    CDRSEditMenu *_editMenu;
     CDRSOpenAlternateMenu *_openAlternateMenu;
+    CDRSEditMenu *_editMenu;
 }
 
 + (void)pluginDidLoad:(NSBundle *)plugin;

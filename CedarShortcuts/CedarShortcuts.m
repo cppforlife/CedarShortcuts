@@ -1,15 +1,19 @@
 #import "CedarShortcuts.h"
 #import "CDRSRunFocusedMenu.h"
 #import "CDRSOpenAlternateMenu.h"
+#import "CDRSEditMenu.h"
 
 @interface CedarShortcuts ()
 @property (nonatomic, retain) CDRSRunFocusedMenu *runFocusedMenu;
-@property (nonatomic, retain) CDRSEditMenu *editMenu;
 @property (nonatomic, retain) CDRSOpenAlternateMenu *openAlternateMenu;
+@property (nonatomic, retain) CDRSEditMenu *editMenu;
 @end
 
 @implementation CedarShortcuts
-@synthesize runFocusedMenu = _runFocusedMenu, editMenu = _editMenu, openAlternateMenu = _openAlternateMenu;
+@synthesize
+    runFocusedMenu = _runFocusedMenu,
+    openAlternateMenu = _openAlternateMenu,
+    editMenu = _editMenu;
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
     static id sharedPlugin = nil;
