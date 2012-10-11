@@ -3,12 +3,19 @@ with your cursor and use a shortcut instead.
 
 You can use OS X keyboard preferences to override the shortcut for any menu item.
 
-* Running focused examples:
+* Running focused examples (Product Menu):
 
   ```text
   Ctrl + Alt + U                  Runs example under the cursor in the currently active file
   Ctrl + Alt + Cmd + U            Runs the all examples in the currently active file
   Shift + Ctrl + Alt + Cmd + U    Runs the previously focused example(s)
+  ```
+
+* Opening alternate file (File Menu):
+
+  ```text
+  Shift + Ctrl + Cmd + DownArrow          Alternate between Spec and implementation in current editor
+  Shift + Ctrl + Alt + Cmd + DownArrow    Open alternate (spec or implementation) in adjacent editor
   ```
 
 * Install by building this project

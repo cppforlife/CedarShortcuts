@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22196F37161F4042007EEDF8 /* CDRSOpenAlternate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22196F36161F4042007EEDF8 /* CDRSOpenAlternate.m */; };
+		22196F3A161F65FF007EEDF8 /* CDRSFilePathNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 22196F39161F65FF007EEDF8 /* CDRSFilePathNavigator.m */; };
+		22EE4BC9161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4BC8161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m */; };
 		960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */ = {isa = PBXBuildFile; fileRef = 960985C91613105500BFBE51 /* CDRSRunFocused.m */; };
 		960FA0931605819F00923A87 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0921605819F00923A87 /* CoreFoundation.framework */; };
 		960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 960FA0A1160584AC00923A87 /* CedarShortcuts.m */; };
@@ -27,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22196F35161F4042007EEDF8 /* CDRSOpenAlternate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSOpenAlternate.h; sourceTree = "<group>"; };
+		22196F36161F4042007EEDF8 /* CDRSOpenAlternate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSOpenAlternate.m; sourceTree = "<group>"; };
+		22196F38161F65FF007EEDF8 /* CDRSFilePathNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSFilePathNavigator.h; sourceTree = "<group>"; };
+		22196F39161F65FF007EEDF8 /* CDRSFilePathNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSFilePathNavigator.m; sourceTree = "<group>"; };
+		22EE4BC7161F3DD200A0FAFE /* CDRSOpenAlternateMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSOpenAlternateMenu.h; sourceTree = "<group>"; };
+		22EE4BC8161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSOpenAlternateMenu.m; sourceTree = "<group>"; };
 		960985C81613105500BFBE51 /* CDRSRunFocused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSRunFocused.h; sourceTree = "<group>"; };
 		960985C91613105500BFBE51 /* CDRSRunFocused.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSRunFocused.m; sourceTree = "<group>"; };
 		960FA08F1605819F00923A87 /* CedarShortcuts.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CedarShortcuts.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +100,12 @@
 			children = (
 				960FA0A0160584AC00923A87 /* CedarShortcuts.h */,
 				960FA0A1160584AC00923A87 /* CedarShortcuts.m */,
+				22196F38161F65FF007EEDF8 /* CDRSFilePathNavigator.h */,
+				22196F39161F65FF007EEDF8 /* CDRSFilePathNavigator.m */,
+				22EE4BC7161F3DD200A0FAFE /* CDRSOpenAlternateMenu.h */,
+				22EE4BC8161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m */,
+				22196F35161F4042007EEDF8 /* CDRSOpenAlternate.h */,
+				22196F36161F4042007EEDF8 /* CDRSOpenAlternate.m */,
 				9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */,
 				9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */,
 				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
@@ -186,6 +201,9 @@
 				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
 				9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */,
+				22EE4BC9161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m in Sources */,
+				22196F37161F4042007EEDF8 /* CDRSOpenAlternate.m in Sources */,
+				22196F3A161F65FF007EEDF8 /* CDRSFilePathNavigator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
