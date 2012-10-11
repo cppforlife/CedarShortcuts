@@ -1,22 +1,23 @@
 #import "CedarShortcuts.h"
 #import "CDRSRunFocusedMenu.h"
-#import "CDRSEditMenu.h"
+#import "CDRSOpenAlternateMenu.h"
 
 @interface CedarShortcuts ()
 @property (nonatomic, retain) CDRSRunFocusedMenu *runFocusedMenu;
 @property (nonatomic, retain) CDRSEditMenu *editMenu;
+@property (nonatomic, retain) CDRSOpenAlternateMenu *openAlternateMenu;
 @end
 
 @implementation CedarShortcuts
-@synthesize runFocusedMenu = _runFocusedMenu, editMenu = _editMenu;
+@synthesize runFocusedMenu = _runFocusedMenu, editMenu = _editMenu, openAlternateMenu = _openAlternateMenu;
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
-	static id sharedPlugin = nil;
-	static dispatch_once_t onceToken;
+    static id sharedPlugin = nil;
+    static dispatch_once_t onceToken;
 
-	dispatch_once(&onceToken, ^{
-		sharedPlugin = [[self alloc] init];
-	});
+    dispatch_once(&onceToken, ^{
+        sharedPlugin = [[self alloc] init];
+    });
 }
 
 - (id)init {
@@ -32,6 +33,7 @@
 
 - (void)dealloc {
     [_runFocusedMenu release];
+    [_openAlternateMenu release];
     [_editMenu release];
     [super dealloc];
 }
@@ -44,6 +46,9 @@
 
     self.runFocusedMenu = [[[CDRSRunFocusedMenu alloc] init] autorelease];
     [self.runFocusedMenu attach];
+
+    self.openAlternateMenu = [[[CDRSOpenAlternateMenu alloc] init] autorelease];
+    [self.openAlternateMenu attach];
 
     self.editMenu = [[[CDRSEditMenu alloc] init] autorelease];
     [self.editMenu attach];

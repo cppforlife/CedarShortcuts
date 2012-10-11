@@ -23,6 +23,14 @@ cursor and use a shortcut instead.
     Insert `#import` declaration for a symbol under the cursor  
     (Edit > Insert Import)
 
+    `Shift + Ctrl + Cmd + DownArrow`  
+    Alternate between Spec and implementation in current editor
+    (File > Alternate Between Spec)
+
+    `Shift + Ctrl + Alt + Cmd + DownArrow`  
+    Open alternate (spec or implementation) in adjacent editor
+    (File > Open Spec/Impl in Adjacent Editor)
+
 You can use OS X keyboard preferences to override the shortcut for any menu item.
 
 (Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from
