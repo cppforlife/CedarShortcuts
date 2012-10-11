@@ -32,7 +32,7 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 
 - (NSMenuItem *)_openSpecOrImplInAdjacentEditorItem {
     NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
-    item.title = @"Open Spec/Impl in adjacent editor";
+    item.title = @"Open Spec/Impl in Adjacent Editor";
     item.target = self;
     item.action = @selector(openAlternateInAdjacentEditor:);
     item.keyEquivalent = [NSString stringWithCharacters:&keyEquivalentUnichar length:1];
@@ -42,7 +42,7 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 
 - (NSMenuItem *)_alternateBetweenSpecItem {
     NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
-    item.title = @"Alternate between Spec";
+    item.title = @"Alternate Between Spec";
     item.target = self;
     item.action = @selector(alternateBetweenSpec:);
     item.keyEquivalent = [NSString stringWithCharacters:&keyEquivalentUnichar length:1];

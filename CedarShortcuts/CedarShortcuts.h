@@ -1,9 +1,10 @@
 #import <Cocoa/Cocoa.h>
 
-@class CDRSRunFocusedMenu, CDRSOpenAlternateMenu;
+@class CDRSRunFocusedMenu, CDRSEditMenu, CDRSOpenAlternateMenu;
 
 @interface CedarShortcuts : NSObject {
     CDRSRunFocusedMenu *_runFocusedMenu;
+    CDRSEditMenu *_editMenu;
     CDRSOpenAlternateMenu *_openAlternateMenu;
 }
 
