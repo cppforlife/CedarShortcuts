@@ -3,6 +3,10 @@
 @interface CDRSXcode
 @end
 
+@interface CDRSXcode (Menu)
++ (id)menuWithTitle:(NSString *)title;
+@end
+
 @interface CDRSXcode (Workspace)
 + (id)currentWorkspaceController;
 + (id)currentSourceCodeEditor;

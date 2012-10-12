@@ -1,5 +1,6 @@
 #import "CDRSRunFocusedMenu.h"
 #import "CDRSRunFocused.h"
+#import "CDRSXcode.h"
 
 @implementation CDRSRunFocusedMenu
 
@@ -15,22 +16,15 @@
     [[[[CDRSRunFocused alloc] init] autorelease] runFocusedLast];
 }
 
-#pragma mark - Menu items
-
 - (void)attach {
-    NSMenu *mainMenu = [NSApp mainMenu];
-
-    for (NSMenuItem *item in mainMenu.itemArray) {
-        if ([item.title isEqualToString:@"Product"]) {
-            NSMenu *productMenu = item.submenu;
-            [productMenu addItem:NSMenuItem.separatorItem];
-            [productMenu addItem:self._runFocusedSpecItem];
-            [productMenu addItem:self._runFocusedFileItem];
-            [productMenu addItem:self._runLastFocusedSpecItem];
-            return;
-        }
-    }
+    NSMenu *productMenu = [CDRSXcode menuWithTitle:@"Product"];
+    [productMenu addItem:NSMenuItem.separatorItem];
+    [productMenu addItem:self._runFocusedSpecItem];
+    [productMenu addItem:self._runFocusedFileItem];
+    [productMenu addItem:self._runLastFocusedSpecItem];
 }
+
+#pragma mark - Menu items
 
 static NSString * const focusedSpecKeyEquivalent = @"u";
 

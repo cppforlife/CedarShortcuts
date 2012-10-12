@@ -3,6 +3,12 @@
 @implementation CDRSXcode
 @end
 
+@implementation CDRSXcode (Menu)
++ (id)menuWithTitle:(NSString *)title {
+    return [[[NSApp mainMenu] itemWithTitle:title] submenu];
+}
+@end
+
 @interface CDRSXcode (WorkspaceClassDump)
 - (id)editor;
 - (id)editorArea;

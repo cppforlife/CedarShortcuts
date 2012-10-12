@@ -1,5 +1,6 @@
 #import "CDRSOpenAlternateMenu.h"
 #import "CDRSOpenAlternate.h"
+#import "CDRSXcode.h"
 
 @implementation CDRSOpenAlternateMenu
 
@@ -11,22 +12,20 @@
     [[[[CDRSOpenAlternate alloc] init] autorelease] openAlternateInAdjacentEditor];
 }
 
-#pragma mark - Menu items
-
 - (void)attach {
-    NSMenu *mainMenu = [NSApp mainMenu];
+    NSMenu *navigateMenu = [CDRSXcode menuWithTitle:@"Navigate"];
 
-    for (NSMenuItem *item in mainMenu.itemArray) {
-        //I wanted to use Navigate menu, but for some reason our menu items don't appear there
-        if ([item.title isEqualToString:@"File"]) {
-            NSMenu *fileMenu = item.submenu;
-            [fileMenu addItem:NSMenuItem.separatorItem];
-            [fileMenu addItem:self._alternateBetweenSpecItem];
-            [fileMenu addItem:self._openSpecOrImplInAdjacentEditorItem];
-            return;
-        }
-    }
+    // Seems that bottom items in Navigate menu are manipulated at times
+    // so let's just insert above specific item that's always there
+    NSUInteger index = [navigateMenu indexOfItemWithTitle:@"Jump to Selection"];
+
+    // insert backwards
+    [navigateMenu insertItem:NSMenuItem.separatorItem atIndex:index];
+    [navigateMenu insertItem:self._openSpecOrImplInAdjacentEditorItem atIndex:index];
+    [navigateMenu insertItem:self._alternateBetweenSpecItem atIndex:index];
 }
+
+#pragma mark - Menu items
 
 static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 
@@ -49,5 +48,4 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
     item.keyEquivalentModifierMask = NSShiftKeyMask | NSControlKeyMask | NSCommandKeyMask;
     return item;
 }
-
 @end

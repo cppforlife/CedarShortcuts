@@ -24,12 +24,12 @@ cursor and use a shortcut instead.
     (Edit > Insert Import)
 
     `Shift + Ctrl + Cmd + DownArrow`  
-    Alternate between Spec and implementation in current editor
-    (File > Alternate Between Spec)
+    Alternate between Spec and implementation in current editor  
+    (Navigate > Alternate Between Spec)
 
     `Shift + Ctrl + Alt + Cmd + DownArrow`  
-    Open alternate (spec or implementation) in adjacent editor
-    (File > Open Spec/Impl in Adjacent Editor)
+    Open alternate (spec or implementation) in adjacent editor  
+    (Navigate > Open Spec/Impl in Adjacent Editor)
 
 You can use OS X keyboard preferences to override the shortcut for any menu item.
 

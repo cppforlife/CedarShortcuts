@@ -1,5 +1,6 @@
 #import "CDRSEditMenu.h"
 #import "CDRSInsertImport.h"
+#import "CDRSXcode.h"
 
 @implementation CDRSEditMenu
 
@@ -8,17 +9,12 @@
 }
 
 - (void)attach {
-    NSMenu *mainMenu = [NSApp mainMenu];
-
-    for (NSMenuItem *item in mainMenu.itemArray) {
-        if ([item.title isEqualToString:@"Edit"]) {
-            NSMenu *productMenu = item.submenu;
-            [productMenu addItem:NSMenuItem.separatorItem];
-            [productMenu addItem:self._insertImportItem];
-            return;
-        }
-    }
+    NSMenu *editMenu = [CDRSXcode menuWithTitle:@"Edit"];
+    [editMenu addItem:NSMenuItem.separatorItem];
+    [editMenu addItem:self._insertImportItem];
 }
+
+#pragma mark - Menu items
 
 - (NSMenuItem *)_insertImportItem {
     NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
