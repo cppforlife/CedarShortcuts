@@ -1,4 +1,5 @@
-CedarShortcuts is an Xcode 4 plugin that adds handy shortcuts for Cedar to the 
+CedarShortcuts is an Xcode 4 plugin that adds handy shortcuts for
+[Cedar](http://github.com/pivotal/cedar) (testing framework) to the
 Xcode menus. For example: Cedar allows you to focus on examples with 
 `fit/fdescribe` but with this plugin you can select `it/describe` with your 
 cursor and use a shortcut instead.
