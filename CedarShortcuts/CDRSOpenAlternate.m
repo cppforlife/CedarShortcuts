@@ -1,6 +1,7 @@
 #import "CDRSOpenAlternate.h"
 #import "CDRSFilePathNavigator.h"
 #import "CDRSXcode.h"
+#import "CDRSUtils.h"
 
 @interface CDRSOpenAlternate (CDRSClassDump)
 - (id)editorArea;
@@ -35,24 +36,35 @@
 #pragma mark - Alternative file paths
 
 - (NSString *)_alternateFilePathForFilePath:(NSString *)filePath {
+    NSString *alternateFilePath = nil;
     NSString *alternateFileBaseName = [self _alternateFileBaseNameForFilePath:filePath];
     NSString *rootPath = self._searchRootPath;
 
-    NSDirectoryEnumerator *dirEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
-    NSString *relativeFilePath = nil;
+    NSDirectoryEnumerator *dirEnumerator =
+        [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
 
-    while (relativeFilePath = [dirEnumerator nextObject]) {
-        BOOL isMFile = [relativeFilePath.pathExtension hasPrefix:@"m"];
-        if (!isMFile) continue;
+    CDRSTimeLog(@"CedarShortcuts - _alternateFilePathForFilePath") {
+        for (NSString *relativeFilePath in dirEnumerator) {
+            // Skip .git in root and *.build dirs
+            if ([relativeFilePath characterAtIndex:0] == '.' ||
+                [relativeFilePath.pathExtension isEqualToString:@"build"]) {
+                [dirEnumerator skipDescendents];
+                continue;
+            }
 
-        NSString *relativeFileBaseName = [relativeFilePath stringByDeletingPathExtension].lastPathComponent;
-        if ([relativeFileBaseName isEqualToString:alternateFileBaseName]) {
-            return [rootPath stringByAppendingPathComponent:relativeFilePath];
+            if (![relativeFilePath.pathExtension hasPrefix:@"m"]) continue;
+
+            NSString *relativeFileBaseName = [relativeFilePath stringByDeletingPathExtension].lastPathComponent;
+            if ([relativeFileBaseName isEqualToString:alternateFileBaseName]) {
+                alternateFilePath = [rootPath stringByAppendingPathComponent:relativeFilePath];
+                break;
+            }
         }
     }
-    return nil;
+    return alternateFilePath;
 }
 
+// Doesn't work with implementation files that end on Spec, e.g. CDRSpec.m -> CDRSpecSpec
 - (NSString *)_alternateFileBaseNameForFilePath:(NSString *)filePath {
     static NSString * const specFileSuffix = @"Spec";
     NSString *fileBaseName = [filePath.lastPathComponent stringByDeletingPathExtension];

@@ -19,6 +19,7 @@
 		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
 		9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */; };
 		969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 969FAA5116224F4700E48B0A /* CDRSEditMenu.m */; };
+		96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CADEBF1626A78700A0B674 /* CDRSUtils.m */; };
 		96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB4E4216227C4E00743C95 /* CDRSXcode.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,8 @@
 		9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDELaunchSession_CDRSCustomize.m; sourceTree = "<group>"; };
 		969FAA5016224F4700E48B0A /* CDRSEditMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSEditMenu.h; sourceTree = "<group>"; };
 		969FAA5116224F4700E48B0A /* CDRSEditMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSEditMenu.m; sourceTree = "<group>"; };
+		96CADEBE1626A78700A0B674 /* CDRSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSUtils.h; sourceTree = "<group>"; };
+		96CADEBF1626A78700A0B674 /* CDRSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSUtils.m; sourceTree = "<group>"; };
 		96DB4E4116227C4E00743C95 /* CDRSXcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSXcode.h; sourceTree = "<group>"; };
 		96DB4E4216227C4E00743C95 /* CDRSXcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSXcode.m; sourceTree = "<group>"; };
 		96FF419916060A3300B461B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 		96DB4E451622824600743C95 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				96CADEBE1626A78700A0B674 /* CDRSUtils.h */,
+				96CADEBF1626A78700A0B674 /* CDRSUtils.m */,
 				9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */,
 				9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */,
 			);
@@ -254,6 +259,7 @@
 				969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */,
 				96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */,
 				96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */,
+				96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
