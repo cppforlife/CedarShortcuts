@@ -7,10 +7,8 @@
 - (id)editorArea;
 - (id)lastActiveEditorContext;
 - (id)sourceCodeDocument;
-
-- (id)workspace;
-- (id)representingCustomDataStore;
-- (NSString *)sdefSupport_projectDirectory;
+- (id)representingFilePath;
+- (NSString *)pathString;
 @end
 
 @implementation CDRSOpenAlternate
@@ -39,6 +37,8 @@
     NSString *alternateFilePath = nil;
     NSString *alternateFileBaseName = [self _alternateFileBaseNameForFilePath:filePath];
     NSString *rootPath = self._searchRootPath;
+
+    NSLog(@"CedarShortcuts - Searching for %@ in %@", alternateFileBaseName, rootPath);
 
     NSDirectoryEnumerator *dirEnumerator =
         [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
@@ -80,13 +80,13 @@
 #pragma mark - Project
 
 - (NSString *)_searchRootPath {
-    return [[self _currentWorkspaceProject] sdefSupport_projectDirectory];
+    id workspaceFilePath = [self._currentWorkspace representingFilePath];
+    return [[workspaceFilePath pathString] stringByDeletingLastPathComponent];
 }
 
-- (id)_currentWorkspaceProject {
+- (id)_currentWorkspace {
     id workspaceController = [CDRSXcode currentWorkspaceController];
-    id workspace = [workspaceController valueForKeyPath:@"_workspace"];
-    return [workspace representingCustomDataStore];
+    return [workspaceController valueForKeyPath:@"_workspace"];
 }
 
 #pragma mark - Editor
