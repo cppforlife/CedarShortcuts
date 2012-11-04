@@ -32,6 +32,10 @@ cursor and use a shortcut instead.
     Open alternate (spec or implementation) in adjacent editor  
     (Navigate > Open Spec/Impl in Adjacent Editor)
 
+    `Ctrl + Alt + E`  
+    Show list of recently opened files  
+    (View > Standard Editor > Show Recent Files)
+
 You can use OS X keyboard preferences to override the shortcut for any menu item.
 
 (Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from

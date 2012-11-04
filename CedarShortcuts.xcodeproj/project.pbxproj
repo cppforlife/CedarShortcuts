@@ -16,6 +16,8 @@
 		960FA0A51605858E00923A87 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0A31605858400923A87 /* AppKit.framework */; };
 		9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */; };
 		96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 96593EE616226AA1009C7979 /* CDRSInsertImport.m */; };
+		966A685C16465960005D28B7 /* CDRSShowRecentFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */; };
+		966A686016465A06005D28B7 /* CDRSViewMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A685F16465A06005D28B7 /* CDRSViewMenu.m */; };
 		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
 		9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43F1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m */; };
 		969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 969FAA5116224F4700E48B0A /* CDRSEditMenu.m */; };
@@ -53,6 +55,10 @@
 		9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSRunFocusedMenu.m; sourceTree = "<group>"; };
 		96593EE516226AA1009C7979 /* CDRSInsertImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSInsertImport.h; sourceTree = "<group>"; };
 		96593EE616226AA1009C7979 /* CDRSInsertImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSInsertImport.m; sourceTree = "<group>"; };
+		966A685A16465960005D28B7 /* CDRSShowRecentFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSShowRecentFiles.h; sourceTree = "<group>"; };
+		966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSShowRecentFiles.m; sourceTree = "<group>"; };
+		966A685E16465A06005D28B7 /* CDRSViewMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSViewMenu.h; sourceTree = "<group>"; };
+		966A685F16465A06005D28B7 /* CDRSViewMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSViewMenu.m; sourceTree = "<group>"; };
 		9677A43A1612C61E00A4708D /* NSObject+CDRSChainSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDRSChainSelector.h"; sourceTree = "<group>"; };
 		9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDRSChainSelector.m"; sourceTree = "<group>"; };
 		9677A43E1612C6D700A4708D /* IDELaunchSession_CDRSCustomize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDELaunchSession_CDRSCustomize.h; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 				9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */,
 				969FAA5016224F4700E48B0A /* CDRSEditMenu.h */,
 				969FAA5116224F4700E48B0A /* CDRSEditMenu.m */,
+				966A685E16465A06005D28B7 /* CDRSViewMenu.h */,
+				966A685F16465A06005D28B7 /* CDRSViewMenu.m */,
 			);
 			name = "Menu Additions";
 			sourceTree = "<group>";
@@ -101,6 +109,8 @@
 				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
 				96593EE516226AA1009C7979 /* CDRSInsertImport.h */,
 				96593EE616226AA1009C7979 /* CDRSInsertImport.m */,
+				966A685A16465960005D28B7 /* CDRSShowRecentFiles.h */,
+				966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -260,6 +270,8 @@
 				96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */,
 				96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */,
 				96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */,
+				966A685C16465960005D28B7 /* CDRSShowRecentFiles.m in Sources */,
+				966A686016465A06005D28B7 /* CDRSViewMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
