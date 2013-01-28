@@ -4,7 +4,7 @@
 @end
 
 @interface CDRSXcode (Menu)
-+ (id)menuWithTitle:(NSString *)title;
++ (NSMenu *)menuWithTitle:(NSString *)title;
 @end
 
 @interface CDRSXcode (Workspace)
@@ -19,18 +19,19 @@
 
 #pragma mark - Run contexts and destinations
 
+#define XCP(type) CDRSXcode_##type
 #define XC(type) id<CDRSXcode_##type>
 
-@protocol CDRSXcode_RunContext <NSObject>
+@protocol XCP(RunContext)
 - (BOOL)isTestable;
 - (NSString *)name;
 @end
 
-@protocol CDRSXcode_RunDestination <NSObject>
+@protocol XCP(RunDestination)
 - (NSString *)fullDisplayName;
 @end
 
-@protocol CDRSXcode_RunContextManager <NSObject>
+@protocol XCP(RunContextManager)
 - (XC(RunContext))activeRunContext;
 - (NSArray *)runContexts;
 
@@ -41,6 +42,19 @@
     andRunDestination:(XC(RunDestination))destination;
 @end
 
-@protocol CDRSXcode_Workspace <NSObject>
+@protocol XCP(Workspace)
 - (XC(RunContextManager))runContextManager;
+@end
+
+#pragma mark - Session launching
+
+@protocol XCP(IDELaunchParametersSnapshot)
+// though env variables are exposed as NSDictionary* in Xcode headers
+- (NSMutableDictionary *)environmentVariables;
+- (NSMutableDictionary *)testingEnvironmentVariables;
+- (void)setTestingEnvironmentVariables:(NSMutableDictionary *)variables;
+@end
+
+@protocol XCP(IDELaunchSession)
+- (XC(IDELaunchParametersSnapshot))launchParameters;
 @end

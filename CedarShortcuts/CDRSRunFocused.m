@@ -36,16 +36,16 @@
 
     static NSString *CDRSRunFocused_EnvironmentVariableName = @"CEDAR_SPEC_FILE";
 
-    [IDELaunchSession_CDRSCustomize customizeNextLaunchSession:^(id launchSession){
+    [IDELaunchSession_CDRSCustomize customizeNextLaunchSession:^(XC(IDELaunchSession) launchSession){
         NSLog(@"CedarShortcuts - Running spec: %@", filePathAndLineNumber);
-        id params = [launchSession launchParameters];
+        XC(IDELaunchParametersSnapshot) params = launchSession.launchParameters;
 
         // Used with 'Run' context (i.e. separate Test target)
-        id runEnv = [params environmentVariables];
+        NSMutableDictionary *runEnv = params.environmentVariables;
         [runEnv setObject:filePathAndLineNumber forKey:CDRSRunFocused_EnvironmentVariableName];
 
         // Used with 'Test' context (i.e. Test Bundles)
-        NSMutableDictionary *testEnv = [[params testingEnvironmentVariables] mutableCopy];
+        NSMutableDictionary *testEnv = [params.testingEnvironmentVariables mutableCopy];
         [testEnv setObject:filePathAndLineNumber forKey:CDRSRunFocused_EnvironmentVariableName];
         [params setTestingEnvironmentVariables:testEnv];
     }];
@@ -66,12 +66,13 @@
 #pragma mark - Editor's file path & line number
 
 - (NSString *)_currentFilePath {
-    NSString *fullPath = [[self._currentSourceCodeDocument fileURL] absoluteString];
+    id sourceCodeDocument = [CDRSXcode.currentSourceCodeEditor sourceCodeDocument];
+    NSString *fullPath = [[sourceCodeDocument fileURL] absoluteString];
     return [fullPath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 }
 
 - (long long)_currentLineNumber {
-    return [[CDRSXcode currentSourceCodeEditor] _currentOneBasedLineNubmer];
+    return [CDRSXcode.currentSourceCodeEditor _currentOneBasedLineNubmer];
 }
 
 #pragma mark - Last focused run path
@@ -86,12 +87,5 @@ static NSString *__lastFocusedRunPath = nil;
     NSString *lastPath = __lastFocusedRunPath;
     __lastFocusedRunPath = [path copy];
     [lastPath release];
-}
-
-#pragma mark - Workspace
-
-- (id)_currentSourceCodeDocument {
-    // IDESourceCodeDocument < IDEEditorDocument
-    return [[CDRSXcode currentSourceCodeEditor] sourceCodeDocument];
 }
 @end

@@ -4,7 +4,7 @@
 @end
 
 @implementation CDRSXcode (Menu)
-+ (id)menuWithTitle:(NSString *)title {
++ (NSMenu *)menuWithTitle:(NSString *)title {
     return [[[NSApp mainMenu] itemWithTitle:title] submenu];
 }
 @end

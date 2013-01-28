@@ -1,18 +1,8 @@
 #import <Foundation/Foundation.h>
+#import "CDRSXcode.h"
 
-typedef void (^CDRSCustomizeBlock)(id);
+typedef void (^CDRSCustomizeBlock)(XC(IDELaunchSession));
 
 @interface IDELaunchSession_CDRSCustomize : NSObject
 + (void)customizeNextLaunchSession:(CDRSCustomizeBlock)block;
-@end
-
-@interface IDELaunchSession_CDRSCustomize (CDRSClassDump)
-// IDELaunchSession
-- (id)launchParameters;
-
-// IDELaunchParametersSnapshot
-// actually a non-mutable dictionary!
-- (NSMutableDictionary *)environmentVariables;
-- (id)testingEnvironmentVariables;
-- (void)setTestingEnvironmentVariables:(NSDictionary *)vars;
 @end
