@@ -1,12 +1,13 @@
 #import <Foundation/Foundation.h>
+#import "CDRSXcode.h"
 
 @interface CDRSSchemePicker : NSObject {
-    id _workspace;
-    id _foundScheme;
-    id _foundDestination;
+    XC(Workspace) _workspace;
+    XC(RunContext) _foundScheme;
+    XC(RunDestination) _foundDestination;
 }
 
-- (id)initWithWorkspace:(id)workspace;
+- (id)initWithWorkspace:(XC(Workspace))workspace;
 
 - (void)findSchemeForTests;
 

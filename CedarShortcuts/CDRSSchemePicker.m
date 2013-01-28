@@ -1,27 +1,10 @@
 #import "CDRSSchemePicker.h"
 #import <Cocoa/Cocoa.h>
 
-@interface CDRSSchemePicker (CDRClassDump)
-- (id)runContextManager;
-
-- (id)activeRunContext;
-- (NSArray *)runContexts;
-
-- (id)activeRunDestination;
-- (NSArray *)availableRunDestinations;
-
-- (void)setActiveRunContext:(id)content
-    andRunDestination:(id)destination;
-
-- (BOOL)isTestable;
-- (NSString *)name;
-- (NSString *)fullDisplayName;
-@end
-
 @interface CDRSSchemePicker ()
-@property (nonatomic, retain) id workspace;
-@property (nonatomic, retain) id foundScheme;
-@property (nonatomic, retain) id foundDestination;
+@property (nonatomic, retain) XC(Workspace) workspace;
+@property (nonatomic, retain) XC(RunContext) foundScheme;
+@property (nonatomic, retain) XC(RunDestination) foundDestination;
 @end
 
 @implementation CDRSSchemePicker
@@ -31,7 +14,7 @@
     foundScheme = _foundScheme,
     foundDestination = _foundDestination;
 
-- (id)initWithWorkspace:(id)workspace {
+- (id)initWithWorkspace:(XC(Workspace))workspace {
     if (self = [super init]) {
         self.workspace = workspace;
     }
@@ -52,7 +35,7 @@
     self.foundDestination = [self._runContextManager activeRunDestination];
 }
 
-- (id)_findTestableScheme {
+- (XC(RunContext))_findTestableScheme {
     NSMutableArray *schemes = [NSMutableArray array];
     // Look at currently selected scheme first
     // since it might have been selected on purpose
@@ -66,7 +49,7 @@
     return nil;
 }
 
-- (BOOL)_isSchemeTestable:(id)scheme {
+- (BOOL)_isSchemeTestable:(XC(RunContext))scheme {
     return [scheme isTestable] ||
         [[scheme name] hasSuffix:@"Tests"] ||
         [[scheme name] hasSuffix:@"Specs"];
@@ -95,7 +78,7 @@
     [NSApp sendAction:action to:nil from:nil];
 }
 
-- (id)_runContextManager {
+- (XC(RunContextManager))_runContextManager {
     return [self.workspace runContextManager];
 }
 @end
