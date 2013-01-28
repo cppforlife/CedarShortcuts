@@ -2,8 +2,7 @@
 #import "CDRSSchemePicker.h"
 #import "IDELaunchSession_CDRSCustomize.h"
 #import "CDRSXcode.h"
-
-#define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
+#import "CDRSUtils.h"
 
 @implementation CDRSRunFocused
 
@@ -32,7 +31,7 @@
     static NSString *CDRSRunFocused_EnvironmentVariableName = @"CEDAR_SPEC_FILE";
 
     [IDELaunchSession_CDRSCustomize customizeNextLaunchSession:^(XC(IDELaunchSession) launchSession){
-        NSLog(@"CedarShortcuts - Running spec: %@", filePathAndLineNumber);
+        NSLog(@"CDRSRunFocused - running spec: '%@'", filePathAndLineNumber);
         XC(IDELaunchParametersSnapshot) params = launchSession.launchParameters;
 
         // Used with 'Run' context (i.e. separate Test target)
@@ -61,8 +60,8 @@
 #pragma mark - Editor's file path & line number
 
 - (NSString *)_currentFilePath {
-    NSString *fullPath = CDRSXcode.currentSourceCodeDocumentFileURL.absoluteString;
-    return [fullPath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+    NSString *fullFilePath = CDRSXcode.currentSourceCodeDocumentFileURL.absoluteString;
+    return [fullFilePath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 }
 
 - (long long)_currentLineNumber {

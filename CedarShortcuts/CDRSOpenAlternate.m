@@ -19,7 +19,10 @@
 
     if (alternateFilePath) {
         [CDRSFilePathNavigator editorContext:^(id editorContext) {
-            [CDRSFilePathNavigator openFilePath:alternateFilePath lineNumber:NSNotFound inEditorContext:editorContext];
+            [CDRSFilePathNavigator
+                openFilePath:alternateFilePath
+                lineNumber:NSNotFound
+                inEditorContext:editorContext];
         } forFilePath:alternateFilePath adjacent:openInAdjacentEditor];
     }
 }
@@ -31,12 +34,12 @@
     NSString *alternateFileBaseName = [self _alternateFileBaseNameForFilePath:filePath];
     NSString *rootPath = self._searchRootPath;
 
-    NSLog(@"CedarShortcuts - Searching for %@ in %@", alternateFileBaseName, rootPath);
+    NSLog(@"CDRSOpenAlternate - searching for '%@' in '%@'", alternateFileBaseName, rootPath);
 
     NSDirectoryEnumerator *dirEnumerator =
         [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
 
-    CDRSTimeLog(@"CedarShortcuts - _alternateFilePathForFilePath") {
+    CDRSTimeLog(@"CDRSOpenAlternate - _alternateFilePathForFilePath") {
         for (NSString *relativeFilePath in dirEnumerator) {
             // Skip .git in root and *.build dirs
             if ([relativeFilePath characterAtIndex:0] == '.' ||
