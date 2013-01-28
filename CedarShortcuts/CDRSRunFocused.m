@@ -5,11 +5,6 @@
 
 #define F(f, ...) [NSString stringWithFormat:f, ##__VA_ARGS__]
 
-@interface CDRSRunFocused (CDRSClassDump)
-- (id)sourceCodeDocument;
-- (long long)_currentOneBasedLineNubmer;
-@end
-
 @implementation CDRSRunFocused
 
 - (BOOL)runFocusedSpec {
@@ -66,9 +61,7 @@
 #pragma mark - Editor's file path & line number
 
 - (NSString *)_currentFilePath {
-    XC(IDESourceCodeEditor) editor = CDRSXcode.currentSourceCodeEditor;
-    XC(IDESourceCodeDocument) document = editor.sourceCodeDocument;
-    NSString *fullPath = document.fileURL.absoluteString;
+    NSString *fullPath = CDRSXcode.currentSourceCodeDocumentFileURL.absoluteString;
     return [fullPath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 }
 

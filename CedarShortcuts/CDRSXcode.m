@@ -1,13 +1,11 @@
 #import "CDRSXcode.h"
 
 @implementation CDRSXcode
-@end
-
-@implementation CDRSXcode (Menu)
 + (NSMenu *)menuWithTitle:(NSString *)title {
     return [[[NSApp mainMenu] itemWithTitle:title] submenu];
 }
 @end
+
 
 @interface CDRSXcode (WorkspaceClassDump)
 - (id)editor;
@@ -17,22 +15,25 @@
 
 @implementation CDRSXcode (Workspace)
 
-+ (id)currentWorkspace {
-    return [self.currentWorkspaceController valueForKey:@"_workspace"];
++ (XC(Workspace))currentWorkspace {
+    return [(id)self.currentWorkspaceController valueForKey:@"_workspace"];
 }
 
-+ (id)currentWorkspaceController {
++ (XC(IDEWorkspaceWindowController))currentWorkspaceController {
     id workspaceController = [[NSApp keyWindow] windowController];
     if ([workspaceController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         return workspaceController;
-    }
-    return nil;
+    } return nil;
 }
 
 + (XC(IDESourceCodeEditor))currentSourceCodeEditor {
-    id editorArea = [self.currentWorkspaceController editorArea];  // IDEEditorArea
-    id editorContext = [editorArea lastActiveEditorContext];       // IDEEditorContext
-    return [editorContext editor];                                 // IDESourceCodeEditor
+    id editorArea = [(id)self.currentWorkspaceController editorArea]; // IDEEditorArea
+    id editorContext = [editorArea lastActiveEditorContext];          // IDEEditorContext
+    return [editorContext editor];                                    // IDESourceCodeEditor
+}
+
++ (NSURL *)currentSourceCodeDocumentFileURL {
+    return CDRSXcode.currentSourceCodeEditor.sourceCodeDocument.fileURL;
 }
 @end
 

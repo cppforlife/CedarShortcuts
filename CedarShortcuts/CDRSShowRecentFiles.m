@@ -2,18 +2,12 @@
 #import "CDRSFilePathNavigator.h"
 #import "CDRSXcode.h"
 
-@interface CDRSShowRecentFiles (CDRSClassDump)
-- (id)activeWorkspaceTabController;
-- (id)workspaceDocument;
-- (id)recentEditorDocumentURLs;
-@end
-
 @implementation CDRSShowRecentFiles
 
 - (void)showMenu {
     XC(IDEEditorContext) editorContext =
         CDRSXcode.currentSourceCodeEditor.editorContext;
-    id relatedItems = [(id)editorContext valueForKey:@"_relatedItemsPopUpButton"];
+    NSView *relatedItems = [(id)editorContext valueForKey:@"_relatedItemsPopUpButton"];
 
     [self._recentsMenu
         popUpMenuPositioningItem:nil
@@ -23,13 +17,21 @@
 
 - (NSMenu *)_recentsMenu {
     NSMenu *menu = [[[NSMenu alloc] init] autorelease];
-    NSArray *recentURLs = [self._workspaceDocument recentEditorDocumentURLs];
-
-    for (NSURL *fileURL in recentURLs) {
+    for (NSURL *fileURL in self._recentEditorDocumentURLs) {
         [menu addItem:[self _recentMenuItem:fileURL]];
     }
     return menu;
 }
+
+- (NSArray *)_recentEditorDocumentURLs {
+    return CDRSXcode
+        .currentWorkspaceController
+        .activeWorkspaceTabController
+        .workspaceDocument
+        .recentEditorDocumentURLs;
+}
+
+#pragma mark -
 
 - (NSMenuItem *)_recentMenuItem:(NSURL *)fileURL {
     NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
@@ -50,10 +52,5 @@
         openFilePath:filePath
         lineNumber:NSNotFound
         inEditorContext:editorContext];
-}
-
-- (id)_workspaceDocument {
-    id workspaceController = CDRSXcode.currentWorkspaceController;
-    return [[workspaceController activeWorkspaceTabController] workspaceDocument];
 }
 @end

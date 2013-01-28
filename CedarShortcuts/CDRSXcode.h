@@ -5,6 +5,10 @@
 #define XCP(type) CDRSXcode_##type
 #define XC(type) id<CDRSXcode_##type>
 
+@protocol XCP(DVTFilePath)
+- (NSString *)pathString;
+@end
+
 @protocol XCP(RunContext)
 - (BOOL)isTestable;
 - (NSString *)name;
@@ -27,7 +31,21 @@
 
 @protocol XCP(Workspace)
 - (XC(RunContextManager))runContextManager;
+- (XC(DVTFilePath))representingFilePath;
 @end
+
+@protocol XCP(IDEWorkspaceDocument)
+- (NSArray *)recentEditorDocumentURLs;
+@end
+
+@protocol XCP(IDEWorkspaceTabController)
+- (XC(IDEWorkspaceDocument))workspaceDocument;
+@end
+
+@protocol XCP(IDEWorkspaceWindowController)
+- (XC(IDEWorkspaceTabController))activeWorkspaceTabController;
+@end
+
 
 #pragma mark - Session launching
 
@@ -41,6 +59,7 @@
 @protocol XCP(IDELaunchSession)
 - (XC(IDELaunchParametersSnapshot))launchParameters;
 @end
+
 
 #pragma mark - Editors
 
@@ -85,19 +104,18 @@
 - (long long)_currentOneBasedLineNubmer;
 @end
 
+
 #pragma mark -
 
 @interface CDRSXcode
-@end
-
-@interface CDRSXcode (Menu)
 + (NSMenu *)menuWithTitle:(NSString *)title;
 @end
 
 @interface CDRSXcode (Workspace)
-+ (id)currentWorkspace;
-+ (id)currentWorkspaceController;
++ (XC(IDEWorkspaceWindowController))currentWorkspaceController;
++ (XC(Workspace))currentWorkspace;
 + (XC(IDESourceCodeEditor))currentSourceCodeEditor;
++ (NSURL *)currentSourceCodeDocumentFileURL;
 @end
 
 @interface CDRSXcode (Alert)

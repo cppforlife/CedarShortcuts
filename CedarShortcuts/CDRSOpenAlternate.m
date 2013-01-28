@@ -3,14 +3,6 @@
 #import "CDRSXcode.h"
 #import "CDRSUtils.h"
 
-@interface CDRSOpenAlternate (CDRSClassDump)
-- (id)editorArea;
-- (id)lastActiveEditorContext;
-- (id)sourceCodeDocument;
-- (id)representingFilePath;
-- (NSString *)pathString;
-@end
-
 @implementation CDRSOpenAlternate
 
 - (void)openAlternateInAdjacentEditor {
@@ -22,12 +14,13 @@
 }
 
 - (void)_openAlternateAdjacent:(BOOL)openInAdjacentEditor {
-    NSString *filePath = [self _alternateFilePathForFilePath:self._currentFilePath];
+    NSString *filePath = CDRSXcode.currentSourceCodeDocumentFileURL.path;
+    NSString *alternateFilePath = [self _alternateFilePathForFilePath:filePath];
 
-    if (filePath) {
+    if (alternateFilePath) {
         [CDRSFilePathNavigator editorContext:^(id editorContext) {
-            [CDRSFilePathNavigator openFilePath:filePath lineNumber:NSNotFound inEditorContext:editorContext];
-        } forFilePath:filePath adjacent:openInAdjacentEditor];
+            [CDRSFilePathNavigator openFilePath:alternateFilePath lineNumber:NSNotFound inEditorContext:editorContext];
+        } forFilePath:alternateFilePath adjacent:openInAdjacentEditor];
     }
 }
 
@@ -80,19 +73,7 @@
 #pragma mark - Project
 
 - (NSString *)_searchRootPath {
-    id workspaceFilePath = [self._currentWorkspace representingFilePath];
-    return [[workspaceFilePath pathString] stringByDeletingLastPathComponent];
-}
-
-- (id)_currentWorkspace {
-    id workspaceController = [CDRSXcode currentWorkspaceController];
-    return [workspaceController valueForKeyPath:@"_workspace"];
-}
-
-#pragma mark - Editor
-
-- (NSString *)_currentFilePath {
-    id currentSourceCodeEditor = [CDRSXcode currentSourceCodeEditor];
-    return [[currentSourceCodeEditor sourceCodeDocument] fileURL].path;
+    XC(DVTFilePath) workspaceFilePath = CDRSXcode.currentWorkspace.representingFilePath;
+    return [workspaceFilePath.pathString stringByDeletingLastPathComponent];
 }
 @end
