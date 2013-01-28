@@ -8,6 +8,7 @@
 @end
 
 @interface CDRSXcode (Workspace)
++ (id)currentWorkspace;
 + (id)currentWorkspaceController;
 + (id)currentSourceCodeEditor;
 @end

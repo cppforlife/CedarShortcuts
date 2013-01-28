@@ -1,4 +1,5 @@
 #import "CDRSRunFocused.h"
+#import "CDRSSchemePicker.h"
 #import "IDELaunchSession_CDRSCustomize.h"
 #import "CDRSXcode.h"
 
@@ -7,16 +8,13 @@
 @interface CDRSRunFocused (CDRSClassDump)
 - (id)sourceCodeDocument;
 - (long long)_currentOneBasedLineNubmer;
-
-- (id)runContextManager;
-- (id)activeRunContext;
-- (BOOL)isTestable;
 @end
 
 @implementation CDRSRunFocused
 
 - (BOOL)runFocusedSpec {
-    self.lastFocusedRunPath = F(@"%@:%lld", self._currentFilePath, self._currentLineNumber);
+    self.lastFocusedRunPath =
+        F(@"%@:%lld", self._currentFilePath, self._currentLineNumber);
     return [self _runFilePathAndLineNumber:self.lastFocusedRunPath];
 }
 
@@ -52,15 +50,19 @@
         [params setTestingEnvironmentVariables:testEnv];
     }];
 
-    if ([self._currentScheme isTestable]) {
-        [NSApp sendAction:@selector(testActiveRunContext:) to:nil from:nil];
-    } else {
-        [NSApp sendAction:@selector(runActiveRunContext:) to:nil from:nil];
-    }
+    [self _runTests];
     return YES;
 }
 
-#pragma mark - Editor
+- (void)_runTests {
+    CDRSSchemePicker *runner =
+        [[[CDRSSchemePicker alloc]
+            initWithWorkspace:[CDRSXcode currentWorkspace]] autorelease];
+    [runner findSchemeForTests];
+    [runner makeFoundSchemeAndDestinationActive];
+    [runner testActiveSchemeAndDestination];
+}
+
 #pragma mark - Editor's file path & line number
 
 - (NSString *)_currentFilePath {
@@ -91,14 +93,5 @@ static NSString *__lastFocusedRunPath = nil;
 - (id)_currentSourceCodeDocument {
     // IDESourceCodeDocument < IDEEditorDocument
     return [[CDRSXcode currentSourceCodeEditor] sourceCodeDocument];
-}
-
-- (id)_currentWorkspace {
-    return [[CDRSXcode currentWorkspaceController] valueForKey:@"_workspace"];
-}
-
-- (id)_currentScheme {
-    id runContextManager = [self._currentWorkspace runContextManager]; // IDEWorkspace
-    return [runContextManager activeRunContext];                       // IDEScheme
 }
 @end

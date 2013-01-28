@@ -17,6 +17,10 @@
 
 @implementation CDRSXcode (Workspace)
 
++ (id)currentWorkspace {
+    return [self.currentWorkspaceController valueForKey:@"_workspace"];
+}
+
 + (id)currentWorkspaceController {
     id workspaceController = [[NSApp keyWindow] windowController];
     if ([workspaceController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
