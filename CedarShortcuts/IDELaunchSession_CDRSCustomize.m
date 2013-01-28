@@ -2,14 +2,18 @@
 #import "NSObject+CDRSChainSelector.h"
 
 #define INIT_METHOD(prefix) \
-    prefix ## _initWithExecutionEnvironment:(id)executionEnvironment  \
-                           launchParameters:(id)launchParameters      \
-                        runnableDisplayName:(id)runnableDisplayName   \
-                               runnableType:(id)runnableType          \
-                             runDestination:(id)runDestination
+    prefix ## initWithExecutionEnvironment:(id)executionEnvironment  \
+                          launchParameters:(id)launchParameters      \
+                       runnableDisplayName:(id)runnableDisplayName   \
+                              runnableType:(id)runnableType          \
+                            runDestination:(id)runDestination
+
+@interface IDELaunchSession_CDRSCustomize (ClassDump)
+- (id)INIT_METHOD();
+@end
 
 @interface IDELaunchSession_CDRSCustomize (CDRSChainSelector)
-- (id)INIT_METHOD(withoutCDRSCustomizeBlock);
+- (id)INIT_METHOD(withoutCDRSCustomizeBlock_);
 @end
 
 @implementation IDELaunchSession_CDRSCustomize
@@ -34,8 +38,8 @@ static CDRSCustomizeBlock __customizeBlock = nil;
     __customizeBlock = [block copy];
 }
 
-- (id)INIT_METHOD(withCDRSCustomizeBlock) {
-    id launchSession = [self INIT_METHOD(withoutCDRSCustomizeBlock)];
+- (id)INIT_METHOD(withCDRSCustomizeBlock_) {
+    id launchSession = [self INIT_METHOD(withoutCDRSCustomizeBlock_)];
     if (__customizeBlock) {
         __customizeBlock(launchSession);
         [__customizeBlock release];

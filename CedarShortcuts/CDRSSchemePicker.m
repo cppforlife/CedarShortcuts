@@ -1,6 +1,12 @@
 #import "CDRSSchemePicker.h"
 #import <Cocoa/Cocoa.h>
 
+@interface NSApplication (ClassDump)
+- (id)runActiveRunContext:(id)sender;
+- (id)testActiveRunContext:(id)sender;
+- (id)stopActiveRunContext:(id)sender;
+@end
+
 @interface CDRSSchemePicker ()
 @property (nonatomic, retain) XC(Workspace) workspace;
 @property (nonatomic, retain) XC(RunContext) foundScheme;

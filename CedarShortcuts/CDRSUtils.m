@@ -2,7 +2,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 
-double CDRSTime() {
+double CDRSTime(void) {
     struct timeval t;
     struct timezone tzp;
     gettimeofday(&t, &tzp);

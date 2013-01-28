@@ -17,7 +17,7 @@
 
     // Seems that bottom items in Navigate menu are manipulated at times
     // so let's just insert above specific item that's always there
-    NSUInteger index = [navigateMenu indexOfItemWithTitle:@"Jump to Selection"];
+    NSInteger index = [navigateMenu indexOfItemWithTitle:@"Jump to Selection"];
 
     // insert backwards
     [navigateMenu insertItem:NSMenuItem.separatorItem atIndex:index];

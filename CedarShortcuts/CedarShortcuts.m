@@ -29,7 +29,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter]
+        [(NSNotificationCenter *)[NSNotificationCenter defaultCenter]
              addObserver:self
              selector:@selector(applicationDidFinishLaunching:)
              name:NSApplicationDidFinishLaunchingNotification
@@ -48,7 +48,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    [[NSNotificationCenter defaultCenter]
+    [(NSNotificationCenter *)[NSNotificationCenter defaultCenter]
          removeObserver:self
          name:NSApplicationDidFinishLaunchingNotification
          object:NSApp];
