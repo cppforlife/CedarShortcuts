@@ -36,7 +36,8 @@ cursor and use a shortcut instead.
     Show list of recently opened files  
     (View > Standard Editor > Show Recent Files)
 
-You can use OS X keyboard preferences to override the shortcut for any menu item.
+You can use OS X keyboard preferences pane to override shortcut for any menu item
+(System Preferences > Keyboard > Keyboard Shortcuts > Application Shortcuts > '+').
 
 (Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from
 `~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`)
