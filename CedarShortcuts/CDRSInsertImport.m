@@ -1,4 +1,5 @@
 #import "CDRSInsertImport.h"
+#import "CDRSAlert.h"
 
 @interface CDRSInsertImport ()
 @property (nonatomic, retain) XC(IDESourceCodeEditor) editor;
@@ -6,14 +7,13 @@
 @end
 
 @implementation CDRSInsertImport
-
 @synthesize
     editor = _editor,
     textStorage = _textStorage;
 
-- (id)init {
+- (id)initWithEditor:(XC(IDESourceCodeEditor))editor {
     if (self = [super init]) {
-        self.editor = CDRSXcode.currentSourceCodeEditor;
+        self.editor = editor;
         self.textStorage = self.editor.sourceCodeDocument.textStorage;
     }
     return self;
@@ -29,13 +29,12 @@
     NSString *symbol = self._symbolUnderCursor;
 
     if ([self _isSymbolImported:symbol]) {
-        [CDRSXcode flashAlertMessage:@"#import declaration exists"];
+        [CDRSAlert flashMessage:@"#import declaration exists"];
     } else {
         NSString *declaration = [self _importDeclaration:symbol];
         NSUInteger index = [self _nextImportDeclarationIndex];
-
         [self _insertImportDeclaration:declaration atIndex:index];
-        [CDRSXcode flashAlertMessage:@"Added #import declaration"];
+        [CDRSAlert flashMessage:@"Added #import declaration"];
     }
 }
 

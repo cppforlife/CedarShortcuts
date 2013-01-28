@@ -1,6 +1,6 @@
 #import "CDRSViewMenu.h"
-#import "CDRSXcode.h"
 #import "CDRSShowRecentFiles.h"
+#import "CDRSXcode.h"
 
 @implementation CDRSViewMenu
 

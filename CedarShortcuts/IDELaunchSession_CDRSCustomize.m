@@ -16,12 +16,16 @@
 static CDRSCustomizeBlock __customizeBlock = nil;
 
 + (void)_setUp {
-    static BOOL done = NO;
-    if (!done) {
-        done = YES;
-        SEL selector = @selector(initWithExecutionEnvironment:launchParameters:runnableDisplayName:runnableType:runDestination:);
-        [self cdrs_chainSelector:selector inClass:NSClassFromString(@"IDELaunchSession") prefix:@"CDRSCustomizeBlock"];
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self cdrs_chainSelector:@selector(
+            initWithExecutionEnvironment:
+            launchParameters:
+            runnableDisplayName:
+            runnableType:
+            runDestination:
+        ) inClass:NSClassFromString(@"IDELaunchSession") prefix:@"CDRSCustomizeBlock"];
+    });
 }
 
 + (void)customizeNextLaunchSession:(CDRSCustomizeBlock)block {

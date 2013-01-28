@@ -1,5 +1,4 @@
-#import <Foundation/Foundation.h>
-#import "CDRSXcode.h"
+#import "CDRSXcodeInterfaces.h"
 
 typedef void (^CDRSCustomizeBlock)(XC(IDELaunchSession));
 

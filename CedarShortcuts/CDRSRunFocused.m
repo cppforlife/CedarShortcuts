@@ -1,6 +1,6 @@
 #import "CDRSRunFocused.h"
-#import "CDRSSchemePicker.h"
 #import "IDELaunchSession_CDRSCustomize.h"
+#import "CDRSSchemePicker.h"
 #import "CDRSXcode.h"
 #import "CDRSUtils.h"
 
@@ -50,8 +50,7 @@
 
 - (void)_runTests {
     CDRSSchemePicker *runner =
-        [[[CDRSSchemePicker alloc]
-            initWithWorkspace:[CDRSXcode currentWorkspace]] autorelease];
+        [CDRSSchemePicker forWorkspace:CDRSXcode.currentWorkspace];
     [runner findSchemeForTests];
     [runner makeFoundSchemeAndDestinationActive];
     [runner testActiveSchemeAndDestination];

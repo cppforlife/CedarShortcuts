@@ -8,11 +8,14 @@
 @end
 
 @implementation CDRSSchemePicker
-
 @synthesize
     workspace = _workspace,
     foundScheme = _foundScheme,
     foundDestination = _foundDestination;
+
++ (CDRSSchemePicker *)forWorkspace:(XC(Workspace))workspace {
+    return [[[self alloc] initWithWorkspace:workspace] autorelease];
+}
 
 - (id)initWithWorkspace:(XC(Workspace))workspace {
     if (self = [super init]) {
@@ -79,6 +82,6 @@
 }
 
 - (XC(RunContextManager))_runContextManager {
-    return [self.workspace runContextManager];
+    return self.workspace.runContextManager;
 }
 @end
