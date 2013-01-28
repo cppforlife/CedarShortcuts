@@ -29,7 +29,7 @@
     return nil;
 }
 
-+ (id)currentSourceCodeEditor {
++ (XC(IDESourceCodeEditor))currentSourceCodeEditor {
     id editorArea = [self.currentWorkspaceController editorArea];  // IDEEditorArea
     id editorContext = [editorArea lastActiveEditorContext];       // IDEEditorContext
     return [editorContext editor];                                 // IDESourceCodeEditor

@@ -66,13 +66,14 @@
 #pragma mark - Editor's file path & line number
 
 - (NSString *)_currentFilePath {
-    id sourceCodeDocument = [CDRSXcode.currentSourceCodeEditor sourceCodeDocument];
-    NSString *fullPath = [[sourceCodeDocument fileURL] absoluteString];
+    XC(IDESourceCodeEditor) editor = CDRSXcode.currentSourceCodeEditor;
+    XC(IDESourceCodeDocument) document = editor.sourceCodeDocument;
+    NSString *fullPath = document.fileURL.absoluteString;
     return [fullPath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 }
 
 - (long long)_currentLineNumber {
-    return [CDRSXcode.currentSourceCodeEditor _currentOneBasedLineNubmer];
+    return CDRSXcode.currentSourceCodeEditor._currentOneBasedLineNubmer;
 }
 
 #pragma mark - Last focused run path

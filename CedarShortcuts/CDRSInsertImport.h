@@ -1,8 +1,9 @@
 #import <Cocoa/Cocoa.h>
+#import "CDRSXcode.h"
 
 @interface CDRSInsertImport : NSObject {
-    id _sourceCodeEditor;
-    id _textStorage;
+    XC(IDESourceCodeEditor) _editor;
+    XC(DVTSourceTextStorage) _textStorage;
 }
 - (void)insertImport;
 @end

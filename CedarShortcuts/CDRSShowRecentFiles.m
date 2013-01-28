@@ -5,15 +5,15 @@
 @interface CDRSShowRecentFiles (CDRSClassDump)
 - (id)activeWorkspaceTabController;
 - (id)workspaceDocument;
-- (id)editorContext;
 - (id)recentEditorDocumentURLs;
 @end
 
 @implementation CDRSShowRecentFiles
 
 - (void)showMenu {
-    id editorContext = [[CDRSXcode currentSourceCodeEditor] editorContext];
-    id relatedItems = [editorContext valueForKey:@"_relatedItemsPopUpButton"];
+    XC(IDEEditorContext) editorContext =
+        CDRSXcode.currentSourceCodeEditor.editorContext;
+    id relatedItems = [(id)editorContext valueForKey:@"_relatedItemsPopUpButton"];
 
     [self._recentsMenu
         popUpMenuPositioningItem:nil
@@ -44,8 +44,8 @@
     NSURL *url = menuItem.representedObject;
     NSString *filePath = [url.absoluteString stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 
-    id editorContext = [[CDRSXcode currentSourceCodeEditor] editorContext];
-
+    XC(IDEEditorContext) editorContext =
+        CDRSXcode.currentSourceCodeEditor.editorContext;
     [CDRSFilePathNavigator
         openFilePath:filePath
         lineNumber:NSNotFound
@@ -53,7 +53,7 @@
 }
 
 - (id)_workspaceDocument {
-    id workspaceController = [CDRSXcode currentWorkspaceController];
+    id workspaceController = CDRSXcode.currentWorkspaceController;
     return [[workspaceController activeWorkspaceTabController] workspaceDocument];
 }
 @end
