@@ -34,8 +34,8 @@
 }
 
 - (void)dealloc {
-    [_sourceCodeEditor release];
-    [_textStorage release];
+    self.sourceCodeEditor = nil;
+    self.textStorage = nil;
     [super dealloc];
 }
 

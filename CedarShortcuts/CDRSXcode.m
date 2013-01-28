@@ -27,14 +27,17 @@
 
 + (id)currentSourceCodeEditor {
     id editorArea = [self.currentWorkspaceController editorArea];  // IDEEditorArea
-    id editorContext = [editorArea lastActiveEditorContext];        // IDEEditorContext
-    return [editorContext editor];                                  // IDESourceCodeEditor
+    id editorContext = [editorArea lastActiveEditorContext];       // IDEEditorContext
+    return [editorContext editor];                                 // IDESourceCodeEditor
 }
 @end
 
 
 @interface CDRSXcode (AlertClassDump)
-- (id)initWithIcon:(id)icon message:(id)message parentWindow:(id)window duration:(double)duration;
+- (id)initWithIcon:(id)icon
+           message:(id)message
+      parentWindow:(id)window
+          duration:(double)duration;
 @end
 
 @implementation CDRSXcode (Alert)

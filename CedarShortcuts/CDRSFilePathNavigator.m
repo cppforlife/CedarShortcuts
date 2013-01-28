@@ -2,8 +2,10 @@
 #import <objc/runtime.h>
 
 @interface CDRSFilePathNavigator (CDRSClassDump)
-- (id)initWithDocumentURL:(NSURL *)url timestamp:(id)timestamp lineRange:(NSRange)lineRange;
-- (id)structureEditorOpenSpecifierForDocumentLocation:(id)location inWorkspace:(id)workspace error:(id*)error;
+- (id)initWithDocumentURL:(NSURL *)url
+        timestamp:(id)timestamp lineRange:(NSRange)lineRange;
+- (id)structureEditorOpenSpecifierForDocumentLocation:(id)location
+        inWorkspace:(id)workspace error:(id*)error;
 - (void)openEditorOpenSpecifier:(id)openSpecifier;
 
 - (void)_doOpenIn_Ask_withWorkspaceTabController:(id)workspaceTabController
@@ -32,12 +34,14 @@
 @end
 
 @implementation CDRSFilePathNavigator
-
 @end
 
 @implementation CDRSFilePathNavigator (Editors)
 
-+ (void)editorContext:(void(^)(id))editorContextBlock forFilePath:(NSString *)filePath adjacent:(BOOL)openAdjacent {
++ (void)editorContext:(void(^)(id))editorContextBlock
+    forFilePath:(NSString *)filePath
+    adjacent:(BOOL)openAdjacent {
+
     id showingEditorContext = [CDRSFilePathNavigator editorContextShowingFilePath:filePath];
     if (showingEditorContext) return editorContextBlock(showingEditorContext);
 
@@ -46,9 +50,7 @@
 
     if (openAdjacent) {
         [self openAdjacentEditorContextTo:lastEditorContext callback:editorContextBlock];
-    } else {
-        editorContextBlock(lastEditorContext);
-    }
+    } else editorContextBlock(lastEditorContext);
 }
 
 + (id)editorContextShowingFilePath:(NSString *)filePath {
@@ -70,7 +72,10 @@
 
 @implementation CDRSFilePathNavigator (Navigation)
 
-+ (void)openFilePath:(NSString *)filePath lineNumber:(NSUInteger)lineNumber inEditorContext:(id)editorContext {
++ (void)openFilePath:(NSString *)filePath
+    lineNumber:(NSUInteger)lineNumber
+    inEditorContext:(id)editorContext {
+
     id location =
         [[[NSClassFromString(@"DVTTextDocumentLocation") alloc]
             initWithDocumentURL:[NSURL fileURLWithPath:filePath]
@@ -84,7 +89,9 @@
             error:NULL]];
 }
 
-+ (void)openAdjacentEditorContextTo:(id)editorContext callback:(void(^)(id))editorContextBlock {
++ (void)openAdjacentEditorContextTo:(id)editorContext
+    callback:(void(^)(id))editorContextBlock {
+
     [NSClassFromString(@"IDEEditorCoordinator")
         _doOpenIn_AdjacentEditor_withWorkspaceTabController:nil
         editorContext:editorContext

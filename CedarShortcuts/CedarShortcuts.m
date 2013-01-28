@@ -39,10 +39,10 @@
 }
 
 - (void)dealloc {
-    [_runFocusedMenu release];
-    [_openAlternateMenu release];
-    [_editMenu release];
-    [_viewMenu release];
+    self.runFocusedMenu = nil;
+    self.openAlternateMenu = nil;
+    self.editMenu = nil;
+    self.viewMenu = nil;
     [super dealloc];
 }
 
