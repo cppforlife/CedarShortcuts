@@ -39,6 +39,7 @@
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.runFocusedMenu = nil;
     self.openAlternateMenu = nil;
     self.editMenu = nil;
