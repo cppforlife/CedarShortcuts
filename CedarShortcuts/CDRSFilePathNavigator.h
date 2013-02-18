@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-@interface CDRSFilePathNavigator
+@interface CDRSFilePathNavigator : NSObject 
 @end
 
 @interface CDRSFilePathNavigator (Editors)
