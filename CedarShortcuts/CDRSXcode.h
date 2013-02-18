@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CDRSXcodeInterfaces.h"
 
-@interface CDRSXcode
+@interface CDRSXcode : NSObject 
 + (NSMenu *)menuWithTitle:(NSString *)title;
 @end
 
