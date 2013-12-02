@@ -4,7 +4,7 @@ Xcode menus. For example: Cedar allows you to focus on examples with
 `fit/fdescribe` but with this plugin you can select `it/describe` with your 
 cursor and use a shortcut instead.
 
-* Install by building this project
+* `rake install` or build from XCode
 
 * Shortcuts
 
