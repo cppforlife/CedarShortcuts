@@ -34,7 +34,6 @@ static CDRSCustomizeBlock __customizeBlock = nil;
 
 + (void)customizeNextLaunchSession:(CDRSCustomizeBlock)block {
     [self _setUp];
-    [__customizeBlock release];
     __customizeBlock = [block copy];
 }
 
@@ -42,7 +41,6 @@ static CDRSCustomizeBlock __customizeBlock = nil;
     id launchSession = [self INIT_METHOD(withoutCDRSCustomizeBlock_)];
     if (__customizeBlock) {
         __customizeBlock(launchSession);
-        [__customizeBlock release];
         __customizeBlock = nil;
     }
     return launchSession;

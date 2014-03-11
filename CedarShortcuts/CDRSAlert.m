@@ -14,6 +14,5 @@
         [[NSClassFromString(@"DVTBezelAlertPanel") alloc]
             initWithIcon:nil message:message parentWindow:nil duration:2.0];
     [alertPanel orderFront:nil];
-    [alertPanel release];
 }
 @end
