@@ -76,10 +76,10 @@
     inEditorContext:(id)editorContext {
 
     id location =
-        [[[NSClassFromString(@"DVTTextDocumentLocation") alloc]
+        [[NSClassFromString(@"DVTTextDocumentLocation") alloc]
             initWithDocumentURL:[NSURL fileURLWithPath:filePath]
             timestamp:nil
-            lineRange:NSMakeRange(MAX(0, lineNumber-1), 1)] autorelease];
+            lineRange:NSMakeRange(MAX(0, lineNumber-1), 1)];
 
     [editorContext openEditorOpenSpecifier:
         [NSClassFromString(@"IDEEditorOpenSpecifier")

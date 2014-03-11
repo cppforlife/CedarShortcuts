@@ -2,8 +2,8 @@
 #import "CDRSAlert.h"
 
 @interface CDRSInsertImport ()
-@property (nonatomic, retain) XC(IDESourceCodeEditor) editor;
-@property (nonatomic, retain) XC(DVTSourceTextStorage) textStorage;
+@property (nonatomic, strong) XC(IDESourceCodeEditor) editor;
+@property (nonatomic, strong) XC(DVTSourceTextStorage) textStorage;
 @end
 
 @implementation CDRSInsertImport
@@ -19,11 +19,6 @@
     return self;
 }
 
-- (void)dealloc {
-    self.editor = nil;
-    self.textStorage = nil;
-    [super dealloc];
-}
 
 - (void)insertImport {
     NSString *symbol = self._symbolUnderCursor;

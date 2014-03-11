@@ -5,7 +5,7 @@
 @implementation CDRSViewMenu
 
 - (void)showRecentFiles:(id)sender {
-    [[[[CDRSShowRecentFiles alloc] init] autorelease] showMenu];
+    [[[CDRSShowRecentFiles alloc] init] showMenu];
 }
 
 - (void)attach {
@@ -18,7 +18,7 @@
 #pragma mark - Menu items
 
 - (NSMenuItem *)_showRecentFilesItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Show Recent Files";
     item.target = self;
     item.action = @selector(showRecentFiles:);

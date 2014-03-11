@@ -5,11 +5,11 @@
 @implementation CDRSOpenAlternateMenu
 
 - (void)alternateBetweenSpec:(id)sender {
-    [[[[CDRSOpenAlternate alloc] init] autorelease] alternateBetweenSpec];
+    [[[CDRSOpenAlternate alloc] init] alternateBetweenSpec];
 }
 
 - (void)openAlternateInAdjacentEditor:(id)sender {
-    [[[[CDRSOpenAlternate alloc] init] autorelease] openAlternateInAdjacentEditor];
+    [[[CDRSOpenAlternate alloc] init] openAlternateInAdjacentEditor];
 }
 
 - (void)attach {
@@ -30,7 +30,7 @@
 static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 
 - (NSMenuItem *)_openSpecOrImplInAdjacentEditorItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Open Spec/Impl in Adjacent Editor";
     item.target = self;
     item.action = @selector(openAlternateInAdjacentEditor:);
@@ -40,7 +40,7 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 }
 
 - (NSMenuItem *)_alternateBetweenSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Alternate Between Spec";
     item.target = self;
     item.action = @selector(alternateBetweenSpec:);
