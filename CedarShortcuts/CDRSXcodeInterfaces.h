@@ -53,11 +53,10 @@
 // though env variables are exposed as NSDictionary* in Xcode headers
 - (NSMutableDictionary *)environmentVariables;
 - (NSMutableDictionary *)testingEnvironmentVariables;
-- (void)setTestingEnvironmentVariables:(NSMutableDictionary *)variables;
 @end
 
 @protocol XCP(IDELaunchSession)
-- (XC(IDELaunchParametersSnapshot))launchParameters;
+@property(retain) XC(IDELaunchParametersSnapshot) launchParameters;
 @end
 
 
