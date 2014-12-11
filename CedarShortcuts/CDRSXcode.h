@@ -8,6 +8,6 @@
 @interface CDRSXcode (Workspace)
 + (XC(IDEWorkspaceWindowController))currentWorkspaceController;
 + (XC(Workspace))currentWorkspace;
-+ (XC(IDESourceCodeEditor))currentSourceCodeEditor;
++ (id)currentEditor;
 + (NSURL *)currentSourceCodeDocumentFileURL;
 @end

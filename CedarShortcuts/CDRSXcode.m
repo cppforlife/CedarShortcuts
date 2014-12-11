@@ -25,13 +25,18 @@
     } return nil;
 }
 
-+ (XC(IDESourceCodeEditor))currentSourceCodeEditor {
++ (id)currentEditor {
     id editorArea = [(id)self.currentWorkspaceController editorArea]; // IDEEditorArea
     id editorContext = [editorArea lastActiveEditorContext];          // IDEEditorContext
-    return [editorContext editor];                                    // IDESourceCodeEditor
+    return [editorContext editor];                                    // IDESourceCodeEditor, Xcode3ProjectEditor or IBDocumentEditor
 }
 
 + (NSURL *)currentSourceCodeDocumentFileURL {
-    return CDRSXcode.currentSourceCodeEditor.sourceCodeDocument.fileURL;
+    id currentEditor = [CDRSXcode currentEditor];
+    if ([currentEditor respondsToSelector:@selector(sourceCodeDocument)]) {
+        return [[currentEditor sourceCodeDocument] fileURL];
+    }
+    return nil;
 }
+
 @end
