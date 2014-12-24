@@ -63,7 +63,7 @@
 }
 
 - (long long)_currentLineNumber {
-    return CDRSXcode.currentSourceCodeEditor._currentOneBasedLineNubmer;
+    return [[CDRSXcode currentEditor] _currentOneBasedLineNumber];
 }
 
 #pragma mark - Last focused run path

@@ -6,7 +6,7 @@
 
 - (void)showMenu {
     XC(IDEEditorContext) editorContext =
-        CDRSXcode.currentSourceCodeEditor.editorContext;
+        [[CDRSXcode currentEditor] editorContext];
     NSView *relatedItems = [(id)editorContext valueForKey:@"_relatedItemsPopUpButton"];
 
     [self._recentsMenu
@@ -47,7 +47,7 @@
     NSString *filePath = [url.absoluteString stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
 
     XC(IDEEditorContext) editorContext =
-        CDRSXcode.currentSourceCodeEditor.editorContext;
+        [[CDRSXcode currentEditor] editorContext];
     [CDRSFilePathNavigator
         openFilePath:filePath
         lineNumber:NSNotFound

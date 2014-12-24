@@ -100,5 +100,5 @@
 - (XC(IDESourceCodeDocument))sourceCodeDocument;
 - (XC(DVTSourceExpression))_expressionAtCharacterIndex:(NSRange)range;
 - (NSArray *)currentSelectedDocumentLocations;
-- (long long)_currentOneBasedLineNubmer;
+- (long long)_currentOneBasedLineNumber;
 @end
