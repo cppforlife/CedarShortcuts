@@ -7,7 +7,7 @@
 - (void)insertImport:(id)sender {
     CDRSInsertImport *insertImporter =
         [[[CDRSInsertImport alloc]
-            initWithEditor:CDRSXcode.currentSourceCodeEditor] autorelease];
+            initWithEditor:[CDRSXcode currentEditor]] autorelease];
     [insertImporter insertImport];
 }
 
