@@ -54,7 +54,14 @@
         self.editor.currentSelectedDocumentLocations.lastObject;
     NSUInteger cursorIndex = currentLocation.characterRange.location;
     NSUInteger expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:NO];
-    return [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
+
+    id symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
+    if (symbol == nil) {
+        expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:YES];
+        symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
+    }
+
+    return symbol;
 }
 
 - (NSString *)_importDeclaration:(NSString *)symbol {
