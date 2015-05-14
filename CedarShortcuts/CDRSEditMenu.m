@@ -1,6 +1,7 @@
 #import "CDRSEditMenu.h"
 #import "CDRSInsertImport.h"
 #import "CDRSXcode.h"
+#import "CDRSFocusUnfocusSpec.h"
 
 @implementation CDRSEditMenu
 
@@ -11,10 +12,17 @@
     [insertImporter insertImport];
 }
 
+- (void)focusSpecUnderCursor:(id)sender {
+    id editor = [CDRSXcode currentEditor];
+    CDRSFocusUnfocusSpec *specFocuser = [[[CDRSFocusUnfocusSpec alloc] initWithEditor:editor] autorelease];
+    [specFocuser focusOrUnfocusSpec];
+}
+
 - (void)attach {
     NSMenu *editMenu = [CDRSXcode menuWithTitle:@"Edit"];
     [editMenu addItem:NSMenuItem.separatorItem];
     [editMenu addItem:self._insertImportItem];
+    [editMenu addItem:self._focusSpecItem];
 }
 
 #pragma mark - Menu items
@@ -26,6 +34,16 @@
     item.action = @selector(insertImport:);
     item.keyEquivalent = @"i";
     item.keyEquivalentModifierMask = NSControlKeyMask | NSAlternateKeyMask;
+    return item;
+}
+
+- (NSMenuItem *)_focusSpecItem {
+    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    item.title = @"Focus spec under cursor";
+    item.target = self;
+    item.action = @selector(focusSpecUnderCursor:);
+    item.keyEquivalent = @"f";
+    item.keyEquivalentModifierMask = NSControlKeyMask;
     return item;
 }
 @end
