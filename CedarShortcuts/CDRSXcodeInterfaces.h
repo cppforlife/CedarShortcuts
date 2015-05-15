@@ -100,5 +100,6 @@
 - (XC(IDESourceCodeDocument))sourceCodeDocument;
 - (XC(DVTSourceExpression))_expressionAtCharacterIndex:(NSRange)range;
 - (NSArray *)currentSelectedDocumentLocations;
-- (long long)_currentOneBasedLineNubmer;
+- (long long)_currentOneBasedLineNumber; // this selector was renamed at some unknown point
+- (long long)_currentOneBasedLineNubmer; // this typo definitely existed prior to xcode 6
 @end
