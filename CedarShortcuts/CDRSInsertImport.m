@@ -7,6 +7,9 @@
 @end
 
 @implementation CDRSInsertImport
+
+static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
+
 @synthesize
     editor = _editor,
     textStorage = _textStorage;
@@ -41,7 +44,7 @@
 #pragma mark - Import declaration
 
 - (BOOL)_isSymbolImported:(NSString *)symbol {
-    NSString *fullSymbol = [NSString stringWithFormat:@"%@.h", symbol];
+    NSString *fullSymbol = [NSString stringWithFormat:importDeclarationFormatString, symbol];
     for (XC(DVTSourceLandmarkItem) importLocation in self.textStorage.importLandmarkItems) {
         if ([importLocation.name rangeOfString:fullSymbol].location != NSNotFound)
             return YES;
@@ -65,7 +68,8 @@
 }
 
 - (NSString *)_importDeclaration:(NSString *)symbol {
-    return [NSString stringWithFormat:@"#import \"%@.h\"\n", symbol];
+    NSString *importDeclaration = [NSString stringWithFormat:importDeclarationFormatString, symbol];
+    return [NSString stringWithFormat:@"#%@\n", importDeclaration];
 }
 
 #pragma mark - Document editing
