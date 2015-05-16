@@ -64,6 +64,7 @@
 
 @protocol XCP(DVTSourceExpression)
 - (NSString *)symbolString;
+- (NSRange)expressionRange;
 @end
 
 @protocol XCP(DVTSourceLandmarkItem)

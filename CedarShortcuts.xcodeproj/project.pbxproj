@@ -25,6 +25,7 @@
 		96C2110216B619B30088393E /* CDRSSchemePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C2110116B619B30088393E /* CDRSSchemePicker.m */; };
 		96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CADEBF1626A78700A0B674 /* CDRSUtils.m */; };
 		96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB4E4216227C4E00743C95 /* CDRSXcode.m */; };
+		AE6599191B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6599181B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		96DB4E4116227C4E00743C95 /* CDRSXcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSXcode.h; sourceTree = "<group>"; };
 		96DB4E4216227C4E00743C95 /* CDRSXcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSXcode.m; sourceTree = "<group>"; };
 		96FF419916060A3300B461B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		AE6599171B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSFocusUnfocusSpec.h; sourceTree = "<group>"; };
+		AE6599181B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSFocusUnfocusSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				96593EE616226AA1009C7979 /* CDRSInsertImport.m */,
 				966A685A16465960005D28B7 /* CDRSShowRecentFiles.h */,
 				966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */,
+				AE6599171B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.h */,
+				AE6599181B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -253,7 +258,7 @@
 		960FA0861605819F00923A87 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 960FA0891605819F00923A87 /* Build configuration list for PBXProject "CedarShortcuts" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -281,6 +286,7 @@
 				960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */,
 				9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */,
 				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
+				AE6599191B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
 				9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */,
 				22EE4BC9161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m in Sources */,
