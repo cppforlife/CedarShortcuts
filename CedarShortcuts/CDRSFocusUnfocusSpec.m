@@ -27,9 +27,14 @@
 
 - (void)focusOrUnfocusSpec {
     XC(DVTTextDocumentLocation) currentLocation = self.editor.currentSelectedDocumentLocations.firstObject;
-    NSUInteger i = currentLocation.characterRange.location;
+    NSUInteger index = currentLocation.characterRange.location;
 
-    for (NSUInteger index = i; index > 0; --index) {
+    if (index > self.textStorage.string.length) {
+        [CDRSAlert flashMessage:@"failed to find an 'it', 'describe', or 'context'"];
+        return;
+    }
+
+    while(index > 0) {
         id <XCP(DVTSourceExpression)> expression = [self previousExpressionAtIndex:index];
         NSString *symbol = expression.symbolString;
         NSUInteger location = expression.expressionRange.location;
@@ -40,6 +45,12 @@
         } else if ([self isFocusedCedarFunction:symbol]) {
             [self removeFocusFromSymbol:symbol AtIndex:location];
             return;
+        }
+
+        index = location - 1;
+        if (index > self.textStorage.string.length) {
+            [CDRSAlert flashMessage:@"failed to find an 'it', 'describe', or 'context'"];
+            break;
         }
     }
 }
