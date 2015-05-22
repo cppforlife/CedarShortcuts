@@ -40,10 +40,14 @@
         NSUInteger location = expression.expressionRange.location;
 
         if ([self isCedarFunction:symbol]) {
-            [self replaceSymbol:expression withString:[@"f" stringByAppendingString:symbol]];
+            [self replaceExpression:expression withString:[@"f" stringByAppendingString:symbol]];
             return;
         } else if ([self isFocusedCedarFunction:symbol]) {
-            [self replaceSymbol:expression withString:[symbol substringFromIndex:1]];
+            [self replaceExpression:expression withString:[symbol substringFromIndex:1]];
+            return;
+        } else if ([self isPendingCedarFunction:symbol]) {
+            NSString *cedarFunction = [symbol substringFromIndex:1];
+            [self replaceExpression:expression withString:[@"f" stringByAppendingString:cedarFunction]];
             return;
         }
 
@@ -75,11 +79,16 @@
     return focused && isCedarFunction;
 }
 
+- (BOOL)isPendingCedarFunction:(NSString *)symbolName {
+    BOOL pending = [symbolName hasPrefix:@"x"];
+    return pending && [self isCedarFunction:[symbolName substringFromIndex:1]];
+}
+
 #pragma mark - Document editing
 
-- (void)replaceSymbol:(id <XCP(DVTSourceExpression)>)symbol withString:(NSString *)replacementString {
+- (void)replaceExpression:(id <XCP(DVTSourceExpression)>)expression withString:(NSString *)replacementString {
     id undoManager = self.editor.sourceCodeDocument.undoManager;
-    [self.textStorage replaceCharactersInRange:symbol.expressionRange
+    [self.textStorage replaceCharactersInRange:expression.expressionRange
                                     withString:replacementString
                                withUndoManager:undoManager];
 }
