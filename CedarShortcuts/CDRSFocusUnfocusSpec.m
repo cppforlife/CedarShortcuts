@@ -40,10 +40,10 @@
         NSUInteger location = expression.expressionRange.location;
 
         if ([self isCedarFunction:symbol]) {
-            [self addFocusToSymbol:symbol AtIndex:location];
+            [self replaceSymbol:expression withString:[@"f" stringByAppendingString:symbol]];
             return;
         } else if ([self isFocusedCedarFunction:symbol]) {
-            [self removeFocusFromSymbol:symbol AtIndex:location];
+            [self replaceSymbol:expression withString:[symbol substringFromIndex:1]];
             return;
         }
 
@@ -62,7 +62,7 @@
     return [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)];
 }
 
-#pragma mark - Identifying Cedar functions
+#pragma mark - Cedar functions
 
 - (BOOL)isCedarFunction:(NSString *)symbolName {
     NSArray *functionNames = @[@"it", @"describe", @"context"];
@@ -70,22 +70,17 @@
 }
 
 - (BOOL)isFocusedCedarFunction:(NSString *)symbolName {
-    return [self isCedarFunction:[symbolName substringFromIndex:1]];
+    BOOL focused = [symbolName hasPrefix:@"f"];
+    BOOL isCedarFunction = [self isCedarFunction:[symbolName substringFromIndex:1]];
+    return focused && isCedarFunction;
 }
 
 #pragma mark - Document editing
 
-- (void)addFocusToSymbol:(NSString *)symbol AtIndex:(NSUInteger)index {
+- (void)replaceSymbol:(id <XCP(DVTSourceExpression)>)symbol withString:(NSString *)replacementString {
     id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
-    [self.textStorage replaceCharactersInRange:NSMakeRange(index, symbol.length)
-                                    withString:[NSString stringWithFormat:@"f%@", symbol]
-                               withUndoManager:undoManager];
-}
-
-- (void)removeFocusFromSymbol:(NSString *)symbol AtIndex:(NSUInteger)index {
-    id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
-    [self.textStorage replaceCharactersInRange:NSMakeRange(index, symbol.length)
-                                    withString:[symbol substringFromIndex:1]
+    [self.textStorage replaceCharactersInRange:symbol.expressionRange
+                                    withString:replacementString
                                withUndoManager:undoManager];
 }
 
