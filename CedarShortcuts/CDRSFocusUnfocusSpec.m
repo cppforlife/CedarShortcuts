@@ -78,7 +78,7 @@
 #pragma mark - Document editing
 
 - (void)replaceSymbol:(id <XCP(DVTSourceExpression)>)symbol withString:(NSString *)replacementString {
-    id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
+    id undoManager = self.editor.sourceCodeDocument.undoManager;
     [self.textStorage replaceCharactersInRange:symbol.expressionRange
                                     withString:replacementString
                                withUndoManager:undoManager];

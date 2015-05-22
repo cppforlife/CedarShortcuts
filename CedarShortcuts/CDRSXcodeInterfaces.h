@@ -92,9 +92,9 @@
 @end
 
 @protocol XCP(IDESourceCodeDocument)
-// from NSDocument super class
 - (NSURL *)fileURL;
 - (XC(DVTSourceTextStorage))textStorage;
+- (id)undoManager;
 @end
 
 @protocol XCP(IDESourceCodeEditor)
