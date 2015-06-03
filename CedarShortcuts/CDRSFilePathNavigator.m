@@ -49,7 +49,7 @@
     id lastEditorContext = [editorArea lastActiveEditorContext];
 
     if (openAdjacent) {
-        [self openAdjacentEditorContextTo:lastEditorContext callback:editorContextBlock];
+        [self openAdjacentEditorContextTo:lastEditorContext callback:editorContextBlock documentURL:filePath];
     } else editorContextBlock(lastEditorContext);
 }
 
@@ -89,12 +89,13 @@
 }
 
 + (void)openAdjacentEditorContextTo:(id)editorContext
-    callback:(void(^)(id))editorContextBlock {
+                           callback:(void(^)(id))editorContextBlock
+                        documentURL:(NSString *)documentURL {
 
     [NSClassFromString(@"IDEEditorCoordinator")
         _doOpenIn_AdjacentEditor_withWorkspaceTabController:nil
         editorContext:editorContext
-        documentURL:nil
+        documentURL:documentURL
         usingBlock:editorContextBlock];
 }
 @end
