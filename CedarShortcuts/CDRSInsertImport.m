@@ -85,7 +85,7 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 }
 
 - (void)_insertImportDeclaration:(NSString *)declaration atIndex:(NSUInteger)index {
-    id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
+    id undoManager = self.editor.sourceCodeDocument.undoManager;
     [self.textStorage
         replaceCharactersInRange:NSMakeRange(index, 0)
         withString:declaration

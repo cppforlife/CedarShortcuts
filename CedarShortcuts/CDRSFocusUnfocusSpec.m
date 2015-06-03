@@ -40,10 +40,14 @@
         NSUInteger location = expression.expressionRange.location;
 
         if ([self isCedarFunction:symbol]) {
-            [self addFocusToSymbol:symbol AtIndex:location];
+            [self replaceExpression:expression withString:[@"f" stringByAppendingString:symbol]];
             return;
         } else if ([self isFocusedCedarFunction:symbol]) {
-            [self removeFocusFromSymbol:symbol AtIndex:location];
+            [self replaceExpression:expression withString:[symbol substringFromIndex:1]];
+            return;
+        } else if ([self isPendingCedarFunction:symbol]) {
+            NSString *cedarFunction = [symbol substringFromIndex:1];
+            [self replaceExpression:expression withString:[@"f" stringByAppendingString:cedarFunction]];
             return;
         }
 
@@ -62,7 +66,7 @@
     return [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)];
 }
 
-#pragma mark - Identifying Cedar functions
+#pragma mark - Cedar functions
 
 - (BOOL)isCedarFunction:(NSString *)symbolName {
     NSArray *functionNames = @[@"it", @"describe", @"context"];
@@ -70,22 +74,22 @@
 }
 
 - (BOOL)isFocusedCedarFunction:(NSString *)symbolName {
-    return [self isCedarFunction:[symbolName substringFromIndex:1]];
+    BOOL focused = [symbolName hasPrefix:@"f"];
+    BOOL isCedarFunction = [self isCedarFunction:[symbolName substringFromIndex:1]];
+    return focused && isCedarFunction;
+}
+
+- (BOOL)isPendingCedarFunction:(NSString *)symbolName {
+    BOOL pending = [symbolName hasPrefix:@"x"];
+    return pending && [self isCedarFunction:[symbolName substringFromIndex:1]];
 }
 
 #pragma mark - Document editing
 
-- (void)addFocusToSymbol:(NSString *)symbol AtIndex:(NSUInteger)index {
-    id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
-    [self.textStorage replaceCharactersInRange:NSMakeRange(index, symbol.length)
-                                    withString:[NSString stringWithFormat:@"f%@", symbol]
-                               withUndoManager:undoManager];
-}
-
-- (void)removeFocusFromSymbol:(NSString *)symbol AtIndex:(NSUInteger)index {
-    id undoManager = [(id)self.editor.sourceCodeDocument valueForKey:@"_dvtUndoManager"];
-    [self.textStorage replaceCharactersInRange:NSMakeRange(index, symbol.length)
-                                    withString:[symbol substringFromIndex:1]
+- (void)replaceExpression:(id <XCP(DVTSourceExpression)>)expression withString:(NSString *)replacementString {
+    id undoManager = self.editor.sourceCodeDocument.undoManager;
+    [self.textStorage replaceCharactersInRange:expression.expressionRange
+                                    withString:replacementString
                                withUndoManager:undoManager];
 }
 
