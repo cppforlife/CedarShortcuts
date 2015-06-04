@@ -2,6 +2,8 @@ PROJECT_NAME = "CedarShortcuts"
 CONFIGURATION = "Release"
 SDK_VERSION = "6.0"
 
+task :default => :install
+
 def build_dir
   File.join(File.dirname(__FILE__), "build").tap do |path|
     Dir.mkdir(path) unless File.exists?(path)
