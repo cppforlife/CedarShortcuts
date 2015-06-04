@@ -48,7 +48,9 @@
                 continue;
             }
 
-            if (![relativeFilePath.pathExtension hasPrefix:@"m"]) continue;
+            if (![self isValidSourceFileExtension:relativeFilePath.pathExtension]) {
+                continue;
+            }
 
             NSString *relativeFileBaseName = [relativeFilePath stringByDeletingPathExtension].lastPathComponent;
             if ([relativeFileBaseName isEqualToString:alternateFileBaseName]) {
@@ -58,6 +60,18 @@
         }
     }
     return alternateFilePath;
+}
+
+- (BOOL)isValidSourceFileExtension:(NSString *)extension {
+    if ([extension isEqualToString:@"m"]) {
+        return YES;
+    }
+
+    if ([extension isEqualToString:@"swift"]) {
+        return YES;
+    }
+
+    return NO;
 }
 
 // Doesn't work with implementation files that end on Spec, e.g. CDRSpec.m -> CDRSpecSpec
