@@ -6,15 +6,18 @@
 @implementation CDRSEditMenu
 
 - (void)insertImport:(id)sender {
-    CDRSInsertImport *insertImporter =
-        [[[CDRSInsertImport alloc]
-            initWithEditor:[CDRSXcode currentEditor]] autorelease];
+    id editor = [CDRSXcode currentEditor];
+    CDRSInsertImport *insertImporter = [[[CDRSInsertImport alloc] initWithEditor:editor] autorelease];
     [insertImporter insertImport];
 }
 
 - (void)focusSpecUnderCursor:(id)sender {
     id editor = [CDRSXcode currentEditor];
-    CDRSFocusUnfocusSpec *specFocuser = [[[CDRSFocusUnfocusSpec alloc] initWithEditor:editor] autorelease];
+    NSArray *functionNames = @[@"it", @"describe", @"context"];
+    CDRSFocusUnfocusSpec *specFocuser = [[[CDRSFocusUnfocusSpec alloc] initWithEditor:editor
+                                                                     ignorablePrefix:@"x"
+                                                                         prefixToAdd:@"f"
+                                                                       functionNames:functionNames] autorelease];
     [specFocuser focusOrUnfocusSpec];
 }
 

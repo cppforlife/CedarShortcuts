@@ -2,18 +2,34 @@
 #import "CDRSAlert.h"
 
 @interface CDRSFocusUnfocusSpec ()
+
 @property (nonatomic, retain) XC(IDESourceCodeEditor) editor;
 @property (nonatomic, retain) XC(DVTSourceTextStorage) textStorage;
+
+@property (nonatomic, copy) NSString *cedarPrefixToAdd;
+@property (nonatomic, copy) NSString *cedarIgnorablePrefix;
+@property (nonatomic, copy) NSArray *cedarFunctions;
+
 @end
 
 @implementation CDRSFocusUnfocusSpec
 
 @synthesize editor = _editor;
 @synthesize textStorage = _textStorage;
+@synthesize cedarIgnorablePrefix = _cedarIgnorablePrefix;
+@synthesize cedarFunctions = _cedarFunctions;
+@synthesize cedarPrefixToAdd = _cedarPrefixToAdd;
 
-- (id)initWithEditor:(XC(IDESourceCodeEditor))editor {
+- (id)initWithEditor:(XC(IDESourceCodeEditor))editor
+     ignorablePrefix:(NSString *)ignorablePrefix
+         prefixToAdd:(NSString *)prefixToAdd
+       functionNames:(NSArray *)functionNames {
+
     if (self = [super init]) {
         self.editor = editor;
+        self.cedarFunctions = functionNames;
+        self.cedarIgnorablePrefix = ignorablePrefix;
+        self.cedarPrefixToAdd = prefixToAdd;
         self.textStorage = self.editor.sourceCodeDocument.textStorage;
     }
     return self;
@@ -22,6 +38,9 @@
 - (void)dealloc {
     self.editor = nil;
     self.textStorage = nil;
+    self.cedarFunctions = nil;
+    self.cedarPrefixToAdd = nil;
+    self.cedarIgnorablePrefix = nil;
     [super dealloc];
 }
 
@@ -39,16 +58,10 @@
         NSString *symbol = expression.symbolString;
         NSUInteger location = expression.expressionRange.location;
 
-        if ([self isCedarFunction:symbol]) {
-            [self replaceExpression:expression withString:[@"f" stringByAppendingString:symbol]];
-            return;
-        } else if ([self isFocusedCedarFunction:symbol]) {
-            [self replaceExpression:expression withString:[symbol substringFromIndex:1]];
-            return;
-        } else if ([self isPendingCedarFunction:symbol]) {
-            NSString *cedarFunction = [symbol substringFromIndex:1];
-            [self replaceExpression:expression withString:[@"f" stringByAppendingString:cedarFunction]];
-            return;
+        NSString *newSymbol = [self replacementForCedarFunction:symbol];
+        if (newSymbol) {
+            [self replaceExpression:expression withString:newSymbol];
+            break;
         }
 
         index = location - 1;
@@ -61,27 +74,46 @@
 
 #pragma mark - Private
 
-- (id <XCP(DVTSourceExpression)>)previousExpressionAtIndex:(NSUInteger)index {
-    NSUInteger expressionIndex = [self.textStorage nextExpressionFromIndex:index forward:NO];
-    return [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)];
+- (NSString *)replacementForCedarFunction:(NSString *)functionName {
+    if ([self isCedarFunction:functionName]) {
+        return [self.cedarPrefixToAdd stringByAppendingString:functionName];
+
+    } else if ([self isFocusedCedarFunction:functionName]) {
+        return [functionName substringFromIndex:self.cedarPrefixToAdd.length];
+
+    } else if ([self isPendingCedarFunction:functionName]) {
+        NSString *cedarFunction = [functionName substringFromIndex:self.cedarPrefixToAdd.length];
+        return [self.cedarPrefixToAdd stringByAppendingString:cedarFunction];
+    }
+
+    return nil;
 }
 
 #pragma mark - Cedar functions
 
 - (BOOL)isCedarFunction:(NSString *)symbolName {
-    NSArray *functionNames = @[@"it", @"describe", @"context"];
-    return [functionNames indexOfObject:symbolName] != NSNotFound;
+    return [self.cedarFunctions indexOfObject:symbolName] != NSNotFound;
 }
 
 - (BOOL)isFocusedCedarFunction:(NSString *)symbolName {
-    BOOL focused = [symbolName hasPrefix:@"f"];
-    BOOL isCedarFunction = [self isCedarFunction:[symbolName substringFromIndex:1]];
-    return focused && isCedarFunction;
+    BOOL focused = [symbolName hasPrefix:self.cedarPrefixToAdd];
+
+    NSString *substring = [symbolName substringFromIndex:self.cedarPrefixToAdd.length];
+    return focused && [self isCedarFunction:substring];
 }
 
 - (BOOL)isPendingCedarFunction:(NSString *)symbolName {
-    BOOL pending = [symbolName hasPrefix:@"x"];
-    return pending && [self isCedarFunction:[symbolName substringFromIndex:1]];
+    BOOL pending = [symbolName hasPrefix:self.cedarIgnorablePrefix];
+
+    NSString *substring = [symbolName substringFromIndex:self.cedarIgnorablePrefix.length];
+    return pending && [self isCedarFunction:substring];
+}
+
+#pragma mark - Document searching
+
+- (id <XCP(DVTSourceExpression)>)previousExpressionAtIndex:(NSUInteger)index {
+    NSUInteger expressionIndex = [self.textStorage nextExpressionFromIndex:index forward:NO];
+    return [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)];
 }
 
 #pragma mark - Document editing
