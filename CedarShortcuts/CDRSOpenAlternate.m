@@ -71,6 +71,10 @@
         return YES;
     }
 
+    if ([extension isEqualToString:@"mm"]) {
+        return YES;
+    }
+
     return NO;
 }
 
