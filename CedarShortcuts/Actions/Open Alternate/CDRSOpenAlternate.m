@@ -34,8 +34,6 @@
     NSString *alternateFileBaseName = [self _alternateFileBaseNameForFilePath:filePath];
     NSString *rootPath = self._searchRootPath;
 
-    NSLog(@"CDRSOpenAlternate - searching for '%@' in '%@'", alternateFileBaseName, rootPath);
-
     NSDirectoryEnumerator *dirEnumerator =
         [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
 
