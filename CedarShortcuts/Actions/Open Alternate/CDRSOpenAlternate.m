@@ -2,8 +2,25 @@
 #import "CDRSFilePathNavigator.h"
 #import "CDRSXcode.h"
 #import "CDRSUtils.h"
+#import "CDRSFileExtensionValidator.h"
+
+@interface CDRSOpenAlternate ()
+
+@property (nonatomic, strong) CDRSFileExtensionValidator *fileExtensionValidator;
+
+@end
 
 @implementation CDRSOpenAlternate
+
+@synthesize fileExtensionValidator = _fileExtensionValidator;
+
+- (instancetype)initWithFileExtensionValidator:(CDRSFileExtensionValidator *)fileExtensionValidator {
+    if (self = [super init]) {
+        self.fileExtensionValidator = fileExtensionValidator;
+    }
+
+    return self;
+}
 
 - (void)openAlternateInAdjacentEditor {
     [self _openAlternateAdjacent:YES];
@@ -12,6 +29,8 @@
 - (void)alternateBetweenSpec {
     [self _openAlternateAdjacent:NO];
 }
+
+#pragma mark - Private
 
 - (void)_openAlternateAdjacent:(BOOL)openInAdjacentEditor {
     NSString *filePath = CDRSXcode.currentSourceCodeDocumentFileURL.path;
@@ -46,7 +65,8 @@
                 continue;
             }
 
-            if (![self isValidSourceFileExtension:relativeFilePath.pathExtension]) {
+            NSString *extension = relativeFilePath.pathExtension;
+            if (![self.fileExtensionValidator isValidSourceFileExtension:extension]) {
                 continue;
             }
 
@@ -58,22 +78,6 @@
         }
     }
     return alternateFilePath;
-}
-
-- (BOOL)isValidSourceFileExtension:(NSString *)extension {
-    if ([extension isEqualToString:@"m"]) {
-        return YES;
-    }
-
-    if ([extension isEqualToString:@"swift"]) {
-        return YES;
-    }
-
-    if ([extension isEqualToString:@"mm"]) {
-        return YES;
-    }
-
-    return NO;
 }
 
 // Doesn't work with implementation files that end on Spec, e.g. CDRSpec.m -> CDRSpecSpec

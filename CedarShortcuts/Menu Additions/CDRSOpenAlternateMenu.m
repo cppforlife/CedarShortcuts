@@ -1,15 +1,18 @@
 #import "CDRSOpenAlternateMenu.h"
 #import "CDRSOpenAlternate.h"
 #import "CDRSXcode.h"
+#import "CDRSFileExtensionValidator.h"
 
 @implementation CDRSOpenAlternateMenu
 
 - (void)alternateBetweenSpec:(id)sender {
-    [[[[CDRSOpenAlternate alloc] init] autorelease] alternateBetweenSpec];
+    CDRSFileExtensionValidator *fileExtensionValidator = [[[CDRSFileExtensionValidator alloc] init] autorelease];
+    [[[[CDRSOpenAlternate alloc] initWithFileExtensionValidator:fileExtensionValidator] autorelease] alternateBetweenSpec];
 }
 
 - (void)openAlternateInAdjacentEditor:(id)sender {
-    [[[[CDRSOpenAlternate alloc] init] autorelease] openAlternateInAdjacentEditor];
+    CDRSFileExtensionValidator *fileExtensionValidator = [[[CDRSFileExtensionValidator alloc] init] autorelease];
+    [[[[CDRSOpenAlternate alloc] initWithFileExtensionValidator:fileExtensionValidator] autorelease] openAlternateInAdjacentEditor];
 }
 
 - (void)attach {

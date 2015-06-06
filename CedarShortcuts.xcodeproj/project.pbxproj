@@ -28,6 +28,9 @@
 		F7BA62301B223369005B99AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA622F1B223369005B99AF /* main.m */; };
 		F7BA62731B22BF8E005B99AF /* Cedar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BA625A1B2233D0005B99AF /* Cedar.framework */; };
 		F7BA62781B22C329005B99AF /* CDRSOpenAlternate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */; };
+		F7BA627B1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA627A1B22C3A9005B99AF /* CDRSFileExtensionValidator.m */; };
+		F7BA627C1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA627A1B22C3A9005B99AF /* CDRSFileExtensionValidator.m */; };
+		F7BA627F1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7BA627E1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +180,9 @@
 		F7BA62491B2233D0005B99AF /* Cedar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cedar.xcodeproj; path = Cedar/Cedar.xcodeproj; sourceTree = "<group>"; };
 		F7BA62761B22C329005B99AF /* CDRSOpenAlternate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSOpenAlternate.h; sourceTree = "<group>"; };
 		F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSOpenAlternate.m; sourceTree = "<group>"; };
+		F7BA62791B22C3A9005B99AF /* CDRSFileExtensionValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSFileExtensionValidator.h; sourceTree = "<group>"; };
+		F7BA627A1B22C3A9005B99AF /* CDRSFileExtensionValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSFileExtensionValidator.m; sourceTree = "<group>"; };
+		F7BA627E1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRSFileExtensionValidatorSpec.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +376,7 @@
 		F7BA62741B22BFBE005B99AF /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				F7BA627D1B22C3F0005B99AF /* Open Alternate */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -379,6 +386,16 @@
 			children = (
 				F7BA62761B22C329005B99AF /* CDRSOpenAlternate.h */,
 				F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */,
+				F7BA62791B22C3A9005B99AF /* CDRSFileExtensionValidator.h */,
+				F7BA627A1B22C3A9005B99AF /* CDRSFileExtensionValidator.m */,
+			);
+			path = "Open Alternate";
+			sourceTree = "<group>";
+		};
+		F7BA627D1B22C3F0005B99AF /* Open Alternate */ = {
+			isa = PBXGroup;
+			children = (
+				F7BA627E1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm */,
 			);
 			path = "Open Alternate";
 			sourceTree = "<group>";
@@ -579,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7BA627B1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */,
 				960FA0A2160584AC00923A87 /* CedarShortcuts.m in Sources */,
 				9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */,
 				9677A4401612C6D700A4708D /* IDELaunchSession_CDRSCustomize.m in Sources */,
@@ -603,6 +621,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7BA627F1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm in Sources */,
+				F7BA627C1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */,
 				F7BA62301B223369005B99AF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,6 +904,7 @@
 				F7BA62431B22336A005B99AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
