@@ -5,15 +5,15 @@
 @implementation CDRSRunFocusedMenu
 
 - (void)runFocusedSpec:(id)sender {
-    [[[[CDRSRunFocused alloc] init] autorelease] runFocusedSpec];
+    [[[CDRSRunFocused alloc] init] runFocusedSpec];
 }
 
 - (void)runFocusedFile:(id)sender {
-    [[[[CDRSRunFocused alloc] init] autorelease] runFocusedFile];
+    [[[CDRSRunFocused alloc] init] runFocusedFile];
 }
 
 - (void)runFocusedLast:(id)sender {
-    [[[[CDRSRunFocused alloc] init] autorelease] runFocusedLast];
+    [[[CDRSRunFocused alloc] init] runFocusedLast];
 }
 
 - (void)attach {
@@ -29,7 +29,7 @@
 static NSString * const focusedSpecKeyEquivalent = @"u";
 
 - (NSMenuItem *)_runFocusedSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Run Focused Spec";
     item.target = self;
     item.action = @selector(runFocusedSpec:);
@@ -39,7 +39,7 @@ static NSString * const focusedSpecKeyEquivalent = @"u";
 }
 
 - (NSMenuItem *)_runFocusedFileItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Run Focused File";
     item.target = self;
     item.action = @selector(runFocusedFile:);
@@ -49,7 +49,7 @@ static NSString * const focusedSpecKeyEquivalent = @"u";
 }
 
 - (NSMenuItem *)_runLastFocusedSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Run Last Focused Spec(s)";
     item.target = self;
     item.action = @selector(runFocusedLast:);

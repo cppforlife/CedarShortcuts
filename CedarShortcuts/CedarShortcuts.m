@@ -3,12 +3,14 @@
 #import "CDRSOpenAlternateMenu.h"
 #import "CDRSEditMenu.h"
 #import "CDRSViewMenu.h"
+#import "CDRSFileExtensionValidator.h"
+#import "CDRSOpenAlternate.h"
 
 @interface CedarShortcuts ()
-@property (nonatomic, retain) CDRSRunFocusedMenu *runFocusedMenu;
-@property (nonatomic, retain) CDRSOpenAlternateMenu *openAlternateMenu;
-@property (nonatomic, retain) CDRSEditMenu *editMenu;
-@property (nonatomic, retain) CDRSViewMenu *viewMenu;
+@property (nonatomic, strong) CDRSRunFocusedMenu *runFocusedMenu;
+@property (nonatomic, strong) CDRSOpenAlternateMenu *openAlternateMenu;
+@property (nonatomic, strong) CDRSEditMenu *editMenu;
+@property (nonatomic, strong) CDRSViewMenu *viewMenu;
 @end
 
 @implementation CedarShortcuts
@@ -40,11 +42,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.runFocusedMenu = nil;
-    self.openAlternateMenu = nil;
-    self.editMenu = nil;
-    self.viewMenu = nil;
-    [super dealloc];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
@@ -53,16 +50,18 @@
          name:NSApplicationDidFinishLaunchingNotification
          object:NSApp];
 
-    self.runFocusedMenu = [[[CDRSRunFocusedMenu alloc] init] autorelease];
+    self.runFocusedMenu = [[CDRSRunFocusedMenu alloc] init];
     [self.runFocusedMenu attach];
 
-    self.openAlternateMenu = [[[CDRSOpenAlternateMenu alloc] init] autorelease];
+    CDRSFileExtensionValidator *fileExtensionValidator = [[CDRSFileExtensionValidator alloc] init];
+    CDRSOpenAlternate *openAlternateAction = [[CDRSOpenAlternate alloc] initWithFileExtensionValidator:fileExtensionValidator];
+    self.openAlternateMenu = [[CDRSOpenAlternateMenu alloc] initWithOpenAlternateAction:openAlternateAction];
     [self.openAlternateMenu attach];
 
-    self.editMenu = [[[CDRSEditMenu alloc] init] autorelease];
+    self.editMenu = [[CDRSEditMenu alloc] init];
     [self.editMenu attach];
 
-    self.viewMenu = [[[CDRSViewMenu alloc] init] autorelease];
+    self.viewMenu = [[CDRSViewMenu alloc] init];
     [self.viewMenu attach];
 }
 @end

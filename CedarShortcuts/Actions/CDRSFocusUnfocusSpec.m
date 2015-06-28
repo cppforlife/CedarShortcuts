@@ -3,8 +3,8 @@
 
 @interface CDRSFocusUnfocusSpec ()
 
-@property (nonatomic, retain) XC(IDESourceCodeEditor) editor;
-@property (nonatomic, retain) XC(DVTSourceTextStorage) textStorage;
+@property (nonatomic, strong) XC(IDESourceCodeEditor) editor;
+@property (nonatomic, strong) XC(DVTSourceTextStorage) textStorage;
 
 @property (nonatomic, copy) NSString *cedarPrefixToAdd;
 @property (nonatomic, copy) NSString *cedarIgnorablePrefix;
@@ -35,14 +35,6 @@
     return self;
 }
 
-- (void)dealloc {
-    self.editor = nil;
-    self.textStorage = nil;
-    self.cedarFunctions = nil;
-    self.cedarPrefixToAdd = nil;
-    self.cedarIgnorablePrefix = nil;
-    [super dealloc];
-}
 
 - (void)focusOrUnfocusSpec {
     XC(DVTTextDocumentLocation) currentLocation = self.editor.currentSelectedDocumentLocations.firstObject;

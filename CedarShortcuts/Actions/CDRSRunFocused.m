@@ -80,8 +80,6 @@ static NSString *__lastFocusedRunPath = nil;
 }
 
 - (void)setLastFocusedRunPath:(NSString *)path {
-    NSString *lastPath = __lastFocusedRunPath;
     __lastFocusedRunPath = [path copy];
-    [lastPath release];
 }
 @end

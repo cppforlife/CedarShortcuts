@@ -16,7 +16,7 @@
 }
 
 - (NSMenu *)_recentsMenu {
-    NSMenu *menu = [[[NSMenu alloc] init] autorelease];
+    NSMenu *menu = [[NSMenu alloc] init];
     for (NSURL *fileURL in self._recentEditorDocumentURLs) {
         [menu addItem:[self _recentMenuItem:fileURL]];
     }
@@ -34,7 +34,7 @@
 #pragma mark -
 
 - (NSMenuItem *)_recentMenuItem:(NSURL *)fileURL {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = [fileURL.absoluteString lastPathComponent];
     item.target = self;
     item.action = @selector(_openRecentFile:);

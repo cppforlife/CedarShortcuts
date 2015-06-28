@@ -8,9 +8,9 @@
 @end
 
 @interface CDRSSchemePicker ()
-@property (nonatomic, retain) XC(Workspace) workspace;
-@property (nonatomic, retain) XC(RunContext) foundScheme;
-@property (nonatomic, retain) XC(RunDestination) foundDestination;
+@property (nonatomic, strong) XC(Workspace) workspace;
+@property (nonatomic, strong) XC(RunContext) foundScheme;
+@property (nonatomic, strong) XC(RunDestination) foundDestination;
 @end
 
 @implementation CDRSSchemePicker
@@ -20,7 +20,7 @@
     foundDestination = _foundDestination;
 
 + (CDRSSchemePicker *)forWorkspace:(XC(Workspace))workspace {
-    return [[[self alloc] initWithWorkspace:workspace] autorelease];
+    return [[self alloc] initWithWorkspace:workspace];
 }
 
 - (id)initWithWorkspace:(XC(Workspace))workspace {
@@ -30,12 +30,6 @@
     return self;
 }
 
-- (void)dealloc {
-    self.workspace = nil;
-    self.foundScheme = nil;
-    self.foundDestination = nil;
-    [super dealloc];
-}
 
 #pragma mark -
 

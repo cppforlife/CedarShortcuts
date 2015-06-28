@@ -7,25 +7,25 @@
 
 - (void)insertImport:(id)sender {
     id editor = [CDRSXcode currentEditor];
-    CDRSInsertImport *insertImporter = [[[CDRSInsertImport alloc] initWithEditor:editor] autorelease];
+    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor];
     [insertImporter insertImport];
 }
 
 - (void)focusSpecUnderCursor:(id)sender {
     id editor = [CDRSXcode currentEditor];
-    CDRSFocusUnfocusSpec *specFocuser = [[[CDRSFocusUnfocusSpec alloc] initWithEditor:editor
+    CDRSFocusUnfocusSpec *specFocuser = [[CDRSFocusUnfocusSpec alloc] initWithEditor:editor
                                                                      ignorablePrefix:@"x"
                                                                          prefixToAdd:@"f"
-                                                                       functionNames:self.functionNames] autorelease];
+                                                                       functionNames:self.functionNames];
     [specFocuser focusOrUnfocusSpec];
 }
 
 - (void)pendSpecUnderCursor:(id)sender {
     id editor = [CDRSXcode currentEditor];
-    CDRSFocusUnfocusSpec *specFocuser = [[[CDRSFocusUnfocusSpec alloc] initWithEditor:editor
+    CDRSFocusUnfocusSpec *specFocuser = [[CDRSFocusUnfocusSpec alloc] initWithEditor:editor
                                                                       ignorablePrefix:@"f"
                                                                           prefixToAdd:@"x"
-                                                                        functionNames:self.functionNames] autorelease];
+                                                                        functionNames:self.functionNames];
     [specFocuser focusOrUnfocusSpec];
 }
 
@@ -40,7 +40,7 @@
 #pragma mark - Menu items
 
 - (NSMenuItem *)_insertImportItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Insert #import";
     item.target = self;
     item.action = @selector(insertImport:);
@@ -50,7 +50,7 @@
 }
 
 - (NSMenuItem *)_focusSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Focus spec under cursor";
     item.target = self;
     item.action = @selector(focusSpecUnderCursor:);
@@ -60,7 +60,7 @@
 }
 
 - (NSMenuItem *)_pendSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Pend spec under cursor";
     item.target = self;
     item.action = @selector(pendSpecUnderCursor:);

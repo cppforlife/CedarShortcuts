@@ -2,17 +2,44 @@
 #import "CDRSOpenAlternate.h"
 #import "CDRSXcode.h"
 #import "CDRSFileExtensionValidator.h"
+#import "CDRSAlert.h"
+
+@interface CDRSOpenAlternateMenu ()
+@property (strong, nonatomic) CDRSOpenAlternate *openAlternateAction;
+@end
 
 @implementation CDRSOpenAlternateMenu
 
+@synthesize openAlternateAction = _openAlternateAction;
+
+- (instancetype)initWithOpenAlternateAction:(CDRSOpenAlternate *)openAlternateAction {
+    if (self = [super init]) {
+        self.openAlternateAction = openAlternateAction;
+    }
+
+    return self;
+}
+
 - (void)alternateBetweenSpec:(id)sender {
-    CDRSFileExtensionValidator *fileExtensionValidator = [[[CDRSFileExtensionValidator alloc] init] autorelease];
-    [[[[CDRSOpenAlternate alloc] initWithFileExtensionValidator:fileExtensionValidator] autorelease] alternateBetweenSpec];
+    @try {
+        [self.openAlternateAction alternateBetweenSpec];
+    }
+    @catch (NSException *exception) {
+        [CDRSAlert flashMessage:@"Aww shucks. (Something bad happened)"];
+        NSLog(@"================> something bad happened while opening the alternate file.");
+        NSLog(@"================> %@", [exception description]);
+    }
 }
 
 - (void)openAlternateInAdjacentEditor:(id)sender {
-    CDRSFileExtensionValidator *fileExtensionValidator = [[[CDRSFileExtensionValidator alloc] init] autorelease];
-    [[[[CDRSOpenAlternate alloc] initWithFileExtensionValidator:fileExtensionValidator] autorelease] openAlternateInAdjacentEditor];
+    @try {
+        [self.openAlternateAction openAlternateInAdjacentEditor];
+    }
+    @catch (NSException *exception) {
+        [CDRSAlert flashMessage:@"Aww shucks. (Something bad happened)"];
+        NSLog(@"================> something bad happened while opening the alternate file in the adjacent editor.");
+        NSLog(@"================> %@", [exception description]);
+    }
 }
 
 - (void)attach {
@@ -33,7 +60,7 @@
 static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 
 - (NSMenuItem *)_openSpecOrImplInAdjacentEditorItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Open Spec/Impl in Adjacent Editor";
     item.target = self;
     item.action = @selector(openAlternateInAdjacentEditor:);
@@ -43,7 +70,7 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
 }
 
 - (NSMenuItem *)_alternateBetweenSpecItem {
-    NSMenuItem *item = [[[NSMenuItem alloc] init] autorelease];
+    NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Alternate Between Spec";
     item.target = self;
     item.action = @selector(alternateBetweenSpec:);
