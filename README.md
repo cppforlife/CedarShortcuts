@@ -1,43 +1,54 @@
-CedarShortcuts is an Xcode 4 plugin that adds handy shortcuts for
-[Cedar](http://github.com/pivotal/cedar) (testing framework) to the
-Xcode menus. For example: Cedar allows you to focus on examples with 
-`fit/fdescribe` but with this plugin you can select `it/describe` with your 
-cursor and use a shortcut instead.
+CedarShortcuts is an Xcode plugin that adds handy shortcuts for [Cedar](https://github.com/pivotal/cedar) or [Quick](https://github.com/quick/quick). 
 
-* `rake install` or build from XCode
+For example: Cedar and Quick allow you to focus on examples with `fit/fdescribe` but with this plugin you can select `it/describe` with your cursor and use a shortcut instead.
 
-* Shortcuts
+# Installation
+* git clone https://github.com/cppforlife/CedarShortcuts.git
+* cd CedarShortcuts
+* rake install
 
-    `Ctrl + Alt + U`  
-    Runs example under the cursor in the currently active file  
-    (Product > Run Focused Spec)
+# Shortcuts
 
-    `Ctrl + Alt + Cmd + U`  
-    Runs the all examples in the currently active file  
-    (Product > Run Focused File)
+* (This list may or may not be complete)
 
-    `Shift + Ctrl + Alt + Cmd + U`  
-    Runs the previously focused example(s)  
-    (Product > Run Last Focused Spec(s))
+    <kbd>CTRL</kbd> + <kbd>F</kbd>
+    Focus (or unfocus) the 'it', 'describe', or 'context' preceding the cursor.  
+    (Edit > Focus spec under cursor)
 
-    `Ctrl + Alt + I`  
-    Insert `#import` declaration for a symbol under the cursor  
+    <kbd>CTRL</kbd> + <kbd>X</kbd>  
+    Pend (or unpend) the 'it', 'describe' or 'context' preceding the cursor.  
+    (Edit > Pend spec under cursor)
+
+    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>  
+    Insert `#import` declaration for a symbol under the cursor.  
     (Edit > Insert Import)
 
-    `Shift + Ctrl + Cmd + DownArrow`  
-    Alternate between Spec and implementation in current editor  
+    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Cmd</kbd> + DownArrow  
+    Alternate between Spec and implementation in current editor.  
     (Navigate > Alternate Between Spec)
 
-    `Shift + Ctrl + Alt + Cmd + DownArrow`  
-    Open alternate (spec or implementation) in adjacent editor  
+    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Cmd</kbd> + DownArrow  
+    Open alternate (spec or implementation) in adjacent editor.  
     (Navigate > Open Spec/Impl in Adjacent Editor)
 
-    `Ctrl + Alt + E`  
+    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>E</kbd>  
     Show list of recently opened files  
     (View > Standard Editor > Show Recent Files)
 
-You can use OS X keyboard preferences pane to override shortcut for any menu item
-(System Preferences > Keyboard > Keyboard Shortcuts > Application Shortcuts > '+').
+    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>U</kbd>  
+    Runs example under the cursor in the currently active file.   
+    (Product > Run Focused Spec)
 
-(Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from
-`~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`)
+    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Cmd</kbd> + <kbd>U</kbd>  
+    Runs the all examples in the currently active file.  
+    (Product > Run Focused File)
+
+    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Cmd</kbd> + <kbd>U</kbd>  
+    Runs the previously focused example(s).  
+    (Product > Run Last Focused Spec(s))
+
+# Changing the keyboard shortcut bindings
+You can use the OS X keyboard preferences pane to override shortcut for any menu item (System Preferences > Keyboard > Keyboard Shortcuts > Application Shortcuts > '+').
+
+# Uninstalling the plugin
+(Plugin can be uninstalled by removing `CedarShortcuts.xcplugin` from `~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`)
