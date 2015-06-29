@@ -23,11 +23,11 @@ For example: Cedar and Quick allow you to focus on examples with `fit/fdescribe`
     Insert `#import` declaration for a symbol under the cursor.  
     (Edit > Insert Import)
 
-    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Cmd</kbd> + DownArrow  
+    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Cmd</kbd> + ↓
     Alternate between Spec and implementation in current editor.  
     (Navigate > Alternate Between Spec)
 
-    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Cmd</kbd> + DownArrow  
+    <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Cmd</kbd> + ↓
     Open alternate (spec or implementation) in adjacent editor.  
     (Navigate > Open Spec/Impl in Adjacent Editor)
 
