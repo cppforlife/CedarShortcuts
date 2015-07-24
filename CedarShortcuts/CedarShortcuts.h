@@ -2,12 +2,6 @@
 
 @class CDRSRunFocusedMenu, CDRSOpenAlternateMenu, CDRSEditMenu, CDRSViewMenu;
 
-@interface CedarShortcuts : NSObject {
-    CDRSRunFocusedMenu *_runFocusedMenu;
-    CDRSOpenAlternateMenu *_openAlternateMenu;
-    CDRSEditMenu *_editMenu;
-    CDRSViewMenu *_viewMenu;
-}
-
+@interface CedarShortcuts : NSObject
 + (void)pluginDidLoad:(NSBundle *)plugin;
 @end

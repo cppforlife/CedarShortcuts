@@ -14,10 +14,6 @@
 @end
 
 @implementation CDRSSchemePicker
-@synthesize
-    workspace = _workspace,
-    foundScheme = _foundScheme,
-    foundDestination = _foundDestination;
 
 + (CDRSSchemePicker *)forWorkspace:(XC(Workspace))workspace {
     return [[self alloc] initWithWorkspace:workspace];

@@ -1,10 +1,10 @@
 #import "CDRSXcodeInterfaces.h"
 
-@interface CDRSInsertImport : NSObject {
-    XC(IDESourceCodeEditor) _editor;
-    XC(DVTSourceTextStorage) _textStorage;
-}
+@interface CDRSInsertImport : NSObject
 
-- (id)initWithEditor:(XC(IDESourceCodeEditor))editor;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithEditor:(XC(IDESourceCodeEditor))editor NS_DESIGNATED_INITIALIZER;
+
 - (void)insertImport;
+
 @end

@@ -1,13 +1,6 @@
 #import "CDRSXcodeInterfaces.h"
 
-@interface CDRSFocusUnfocusSpec : NSObject {
-    XC(IDESourceCodeEditor) _editor;
-    XC(DVTSourceTextStorage) _textStorage;
-    NSArray *_cedarFunctions;
-    NSString *_cedarIgnorablePrefix;
-    NSString *_cedarPrefixToAdd;
-}
-
+@interface CDRSFocusUnfocusSpec : NSObject
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

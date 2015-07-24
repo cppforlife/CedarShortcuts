@@ -10,8 +10,6 @@
 
 @implementation CDRSOpenAlternateMenu
 
-@synthesize openAlternateAction = _openAlternateAction;
-
 - (instancetype)initWithOpenAlternateAction:(CDRSOpenAlternate *)openAlternateAction {
     if (self = [super init]) {
         self.openAlternateAction = openAlternateAction;

@@ -14,12 +14,6 @@
 
 @implementation CDRSFocusUnfocusSpec
 
-@synthesize editor = _editor;
-@synthesize textStorage = _textStorage;
-@synthesize cedarIgnorablePrefix = _cedarIgnorablePrefix;
-@synthesize cedarFunctions = _cedarFunctions;
-@synthesize cedarPrefixToAdd = _cedarPrefixToAdd;
-
 - (id)initWithEditor:(XC(IDESourceCodeEditor))editor
      ignorablePrefix:(NSString *)ignorablePrefix
          prefixToAdd:(NSString *)prefixToAdd

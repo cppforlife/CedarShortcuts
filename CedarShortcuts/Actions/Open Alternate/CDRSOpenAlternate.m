@@ -12,8 +12,6 @@
 
 @implementation CDRSOpenAlternate
 
-@synthesize fileExtensionValidator = _fileExtensionValidator;
-
 - (instancetype)initWithFileExtensionValidator:(CDRSFileExtensionValidator *)fileExtensionValidator {
     if (self = [super init]) {
         self.fileExtensionValidator = fileExtensionValidator;

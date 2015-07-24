@@ -14,11 +14,6 @@
 @end
 
 @implementation CedarShortcuts
-@synthesize
-    runFocusedMenu = _runFocusedMenu,
-    openAlternateMenu = _openAlternateMenu,
-    editMenu = _editMenu,
-    viewMenu = _viewMenu;
 
 + (void)pluginDidLoad:(NSBundle *)plugin {
     static id sharedPlugin = nil;
@@ -31,7 +26,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        [(NSNotificationCenter *)[NSNotificationCenter defaultCenter]
+        [[NSNotificationCenter defaultCenter]
              addObserver:self
              selector:@selector(applicationDidFinishLaunching:)
              name:NSApplicationDidFinishLaunchingNotification
@@ -45,7 +40,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    [(NSNotificationCenter *)[NSNotificationCenter defaultCenter]
+    [[NSNotificationCenter defaultCenter]
          removeObserver:self
          name:NSApplicationDidFinishLaunchingNotification
          object:NSApp];

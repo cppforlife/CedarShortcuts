@@ -22,7 +22,8 @@
     id workspaceController = [[NSApp keyWindow] windowController];
     if ([workspaceController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")]) {
         return workspaceController;
-    } return nil;
+    }
+    return nil;
 }
 
 + (id)currentEditor {

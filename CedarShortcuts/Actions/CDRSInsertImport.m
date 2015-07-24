@@ -10,10 +10,6 @@
 
 static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 
-@synthesize
-    editor = _editor,
-    textStorage = _textStorage;
-
 - (id)initWithEditor:(XC(IDESourceCodeEditor))editor {
     if (self = [super init]) {
         self.editor = editor;

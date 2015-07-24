@@ -1,10 +1,6 @@
 #import "CDRSXcodeInterfaces.h"
 
-@interface CDRSSchemePicker : NSObject {
-    XC(Workspace) _workspace;
-    XC(RunContext) _foundScheme;
-    XC(RunDestination) _foundDestination;
-}
+@interface CDRSSchemePicker : NSObject
 
 + (CDRSSchemePicker *)forWorkspace:(XC(Workspace))workspace;
 
