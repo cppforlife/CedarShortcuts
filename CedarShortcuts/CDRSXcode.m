@@ -37,6 +37,11 @@
     if ([currentEditor respondsToSelector:@selector(sourceCodeDocument)]) {
         return [[currentEditor sourceCodeDocument] fileURL];
     }
+
+    if ([currentEditor respondsToSelector:@selector(document)]) {
+        return [[currentEditor document] fileURL];
+    }
+
     return nil;
 }
 

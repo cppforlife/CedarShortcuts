@@ -15,6 +15,10 @@
         return YES;
     }
 
+    if ([fileExtension isEqualToString:@"xib"]) {
+        return YES;
+    }
+
     return NO;
 }
 

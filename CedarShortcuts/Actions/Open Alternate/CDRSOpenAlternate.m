@@ -21,18 +21,18 @@
 }
 
 - (void)openAlternateInAdjacentEditor {
-    [self _openAlternateAdjacent:YES];
+    [self openAlternateAdjacent:YES];
 }
 
 - (void)alternateBetweenSpec {
-    [self _openAlternateAdjacent:NO];
+    [self openAlternateAdjacent:NO];
 }
 
 #pragma mark - Private
 
-- (void)_openAlternateAdjacent:(BOOL)openInAdjacentEditor {
+- (void)openAlternateAdjacent:(BOOL)openInAdjacentEditor {
     NSString *filePath = CDRSXcode.currentSourceCodeDocumentFileURL.path;
-    NSString *alternateFilePath = [self _alternateFilePathForFilePath:filePath];
+    NSString *alternateFilePath = [self alternateFilePathForFilePath:filePath];
 
     if (alternateFilePath) {
         [CDRSFilePathNavigator editorContext:^(id editorContext) {
@@ -46,13 +46,12 @@
 
 #pragma mark - Alternative file paths
 
-- (NSString *)_alternateFilePathForFilePath:(NSString *)filePath {
+- (NSString *)alternateFilePathForFilePath:(NSString *)filePath {
     NSString *alternateFilePath = nil;
-    NSString *alternateFileBaseName = [self _alternateFileBaseNameForFilePath:filePath];
-    NSString *rootPath = self._searchRootPath;
+    NSString *alternateFileBaseName = [self alternateFileBaseNameForFilePath:filePath];
+    NSString *rootPath = self.searchRootPath;
 
-    NSDirectoryEnumerator *dirEnumerator =
-        [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
+    NSDirectoryEnumerator *dirEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:rootPath];
 
     CDRSTimeLog(@"CDRSOpenAlternate - _alternateFilePathForFilePath") {
         for (NSString *relativeFilePath in dirEnumerator) {
@@ -69,6 +68,7 @@
             }
 
             NSString *relativeFileBaseName = [relativeFilePath stringByDeletingPathExtension].lastPathComponent;
+
             if ([relativeFileBaseName isEqualToString:alternateFileBaseName]) {
                 alternateFilePath = [rootPath stringByAppendingPathComponent:relativeFilePath];
                 break;
@@ -79,7 +79,7 @@
 }
 
 // Doesn't work with implementation files that end on Spec, e.g. CDRSpec.m -> CDRSpecSpec
-- (NSString *)_alternateFileBaseNameForFilePath:(NSString *)filePath {
+- (NSString *)alternateFileBaseNameForFilePath:(NSString *)filePath {
     static NSString * const specFileSuffix = @"Spec";
     NSString *fileBaseName = [filePath.lastPathComponent stringByDeletingPathExtension];
 
@@ -93,7 +93,7 @@
 
 #pragma mark - Project
 
-- (NSString *)_searchRootPath {
+- (NSString *)searchRootPath {
     XC(DVTFilePath) workspaceFilePath = CDRSXcode.currentWorkspace.representingFilePath;
     return [workspaceFilePath.pathString stringByDeletingLastPathComponent];
 }

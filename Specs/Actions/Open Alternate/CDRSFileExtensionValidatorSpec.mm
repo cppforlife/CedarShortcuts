@@ -25,6 +25,10 @@ describe(@"CDRSFileExtensionValidator", ^{
         [subject isValidSourceFileExtension:@"mm"] should be_truthy;
     });
 
+    it(@"should accept interface builder files", ^{
+        [subject isValidSourceFileExtension:@"xib"] should be_truthy;
+    });
+
     it(@"should not accept other file extensions", ^{
         [subject isValidSourceFileExtension:@"garbage"] should be_falsy;
     });
