@@ -15,7 +15,6 @@
 		960FA0A51605858E00923A87 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960FA0A31605858400923A87 /* AppKit.framework */; };
 		961B3EC916B65E94001A27ED /* CDRSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 961B3EC816B65E94001A27ED /* CDRSAlert.m */; };
 		9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */; };
-		96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 96593EE616226AA1009C7979 /* CDRSInsertImport.m */; };
 		966A685C16465960005D28B7 /* CDRSShowRecentFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */; };
 		966A686016465A06005D28B7 /* CDRSViewMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A685F16465A06005D28B7 /* CDRSViewMenu.m */; };
 		9677A43D1612C65200A4708D /* NSObject+CDRSChainSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9677A43C1612C65200A4708D /* NSObject+CDRSChainSelector.m */; };
@@ -25,6 +24,12 @@
 		96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CADEBF1626A78700A0B674 /* CDRSUtils.m */; };
 		96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB4E4216227C4E00743C95 /* CDRSXcode.m */; };
 		AE6599191B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6599181B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m */; };
+		AE80EAEE1B7E77D2009D985B /* CDRSInsertImport.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAEC1B7E77D2009D985B /* CDRSInsertImport.m */; };
+		AE80EAEF1B7E77D2009D985B /* CDRSInsertImport.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAEC1B7E77D2009D985B /* CDRSInsertImport.m */; };
+		AE80EAF21B7E77EE009D985B /* CDRSSymbolImportValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAF11B7E77EE009D985B /* CDRSSymbolImportValidator.m */; };
+		AE80EAF31B7E77EE009D985B /* CDRSSymbolImportValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAF11B7E77EE009D985B /* CDRSSymbolImportValidator.m */; };
+		AE80EAF61B7E783F009D985B /* CDRSSymbolImportValidatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAF51B7E783F009D985B /* CDRSSymbolImportValidatorSpec.mm */; };
+		AE80EAF81B7E9CE9009D985B /* CDRSInsertImportSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE80EAF71B7E9CE9009D985B /* CDRSInsertImportSpec.mm */; };
 		F74FD2E31B3FB57A0098B9F8 /* CDRSOpenAlternateMenuSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = F74FD2E21B3FB57A0098B9F8 /* CDRSOpenAlternateMenuSpec.mm */; };
 		F74FD2E41B3FB6AB0098B9F8 /* CDRSOpenAlternateMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4BC8161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m */; };
 		F74FD2E51B3FB6B20098B9F8 /* CDRSOpenAlternate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */; };
@@ -160,8 +165,6 @@
 		96387016161816A500BE29E7 /* clean.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = "<group>"; };
 		9646DDEC161D435F00AAF79C /* CDRSRunFocusedMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSRunFocusedMenu.h; sourceTree = "<group>"; };
 		9646DDED161D435F00AAF79C /* CDRSRunFocusedMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSRunFocusedMenu.m; sourceTree = "<group>"; };
-		96593EE516226AA1009C7979 /* CDRSInsertImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSInsertImport.h; sourceTree = "<group>"; };
-		96593EE616226AA1009C7979 /* CDRSInsertImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSInsertImport.m; sourceTree = "<group>"; };
 		966A685A16465960005D28B7 /* CDRSShowRecentFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSShowRecentFiles.h; sourceTree = "<group>"; };
 		966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSShowRecentFiles.m; sourceTree = "<group>"; };
 		966A685E16465A06005D28B7 /* CDRSViewMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSViewMenu.h; sourceTree = "<group>"; };
@@ -181,6 +184,12 @@
 		96FF419916060A3300B461B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		AE6599171B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSFocusUnfocusSpec.h; sourceTree = "<group>"; };
 		AE6599181B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSFocusUnfocusSpec.m; sourceTree = "<group>"; };
+		AE80EAEC1B7E77D2009D985B /* CDRSInsertImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSInsertImport.m; sourceTree = "<group>"; };
+		AE80EAED1B7E77D2009D985B /* CDRSInsertImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSInsertImport.h; sourceTree = "<group>"; };
+		AE80EAF01B7E77EE009D985B /* CDRSSymbolImportValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSSymbolImportValidator.h; sourceTree = "<group>"; };
+		AE80EAF11B7E77EE009D985B /* CDRSSymbolImportValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSSymbolImportValidator.m; sourceTree = "<group>"; };
+		AE80EAF51B7E783F009D985B /* CDRSSymbolImportValidatorSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRSSymbolImportValidatorSpec.mm; sourceTree = "<group>"; };
+		AE80EAF71B7E9CE9009D985B /* CDRSInsertImportSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRSInsertImportSpec.mm; sourceTree = "<group>"; };
 		F74FD2E21B3FB57A0098B9F8 /* CDRSOpenAlternateMenuSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRSOpenAlternateMenuSpec.mm; sourceTree = "<group>"; };
 		F7BA62281B223369005B99AF /* Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7BA622B1B223369005B99AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -232,11 +241,10 @@
 		9608A8FD1622755B00763892 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				AE80EADF1B7E778B009D985B /* Insert Import */,
 				F7BA62751B22C04B005B99AF /* Open Alternate */,
 				960985C81613105500BFBE51 /* CDRSRunFocused.h */,
 				960985C91613105500BFBE51 /* CDRSRunFocused.m */,
-				96593EE516226AA1009C7979 /* CDRSInsertImport.h */,
-				96593EE616226AA1009C7979 /* CDRSInsertImport.m */,
 				966A685A16465960005D28B7 /* CDRSShowRecentFiles.h */,
 				966A685B16465960005D28B7 /* CDRSShowRecentFiles.m */,
 				AE6599171B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.h */,
@@ -336,6 +344,26 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		AE80EADF1B7E778B009D985B /* Insert Import */ = {
+			isa = PBXGroup;
+			children = (
+				AE80EAED1B7E77D2009D985B /* CDRSInsertImport.h */,
+				AE80EAEC1B7E77D2009D985B /* CDRSInsertImport.m */,
+				AE80EAF01B7E77EE009D985B /* CDRSSymbolImportValidator.h */,
+				AE80EAF11B7E77EE009D985B /* CDRSSymbolImportValidator.m */,
+			);
+			path = "Insert Import";
+			sourceTree = "<group>";
+		};
+		AE80EAF41B7E782B009D985B /* Insert Import */ = {
+			isa = PBXGroup;
+			children = (
+				AE80EAF51B7E783F009D985B /* CDRSSymbolImportValidatorSpec.mm */,
+				AE80EAF71B7E9CE9009D985B /* CDRSInsertImportSpec.mm */,
+			);
+			path = "Insert Import";
+			sourceTree = "<group>";
+		};
 		F74FD2D51B3FB55A0098B9F8 /* Menu Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +421,7 @@
 		F7BA62741B22BFBE005B99AF /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				AE80EAF41B7E782B009D985B /* Insert Import */,
 				F7BA627D1B22C3F0005B99AF /* Open Alternate */,
 			);
 			path = Actions;
@@ -620,11 +649,12 @@
 				AE6599191B03E07B0071CDD8 /* CDRSFocusUnfocusSpec.m in Sources */,
 				960985CA1613105500BFBE51 /* CDRSRunFocused.m in Sources */,
 				F7BA62781B22C329005B99AF /* CDRSOpenAlternate.m in Sources */,
+				AE80EAEE1B7E77D2009D985B /* CDRSInsertImport.m in Sources */,
+				AE80EAF21B7E77EE009D985B /* CDRSSymbolImportValidator.m in Sources */,
 				9646DDEE161D435F00AAF79C /* CDRSRunFocusedMenu.m in Sources */,
 				22EE4BC9161F3DD200A0FAFE /* CDRSOpenAlternateMenu.m in Sources */,
 				22196F3A161F65FF007EEDF8 /* CDRSFilePathNavigator.m in Sources */,
 				969FAA5216224F4700E48B0A /* CDRSEditMenu.m in Sources */,
-				96593EE716226AA1009C7979 /* CDRSInsertImport.m in Sources */,
 				96DB4E4316227C4E00743C95 /* CDRSXcode.m in Sources */,
 				96CADEC01626A78700A0B674 /* CDRSUtils.m in Sources */,
 				966A685C16465960005D28B7 /* CDRSShowRecentFiles.m in Sources */,
@@ -640,8 +670,12 @@
 			files = (
 				F74FD2E41B3FB6AB0098B9F8 /* CDRSOpenAlternateMenu.m in Sources */,
 				F7BA627F1B22C417005B99AF /* CDRSFileExtensionValidatorSpec.mm in Sources */,
+				AE80EAF81B7E9CE9009D985B /* CDRSInsertImportSpec.mm in Sources */,
+				AE80EAF61B7E783F009D985B /* CDRSSymbolImportValidatorSpec.mm in Sources */,
+				AE80EAEF1B7E77D2009D985B /* CDRSInsertImport.m in Sources */,
 				F74FD2E51B3FB6B20098B9F8 /* CDRSOpenAlternate.m in Sources */,
 				F74FD2E61B3FB8E20098B9F8 /* CDRSFilePathNavigator.m in Sources */,
+				AE80EAF31B7E77EE009D985B /* CDRSSymbolImportValidator.m in Sources */,
 				F7BA627C1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */,
 				F74FD2E71B3FB8E80098B9F8 /* CDRSXcode.m in Sources */,
 				F74FD2E91B3FB9820098B9F8 /* CDRSAlert.m in Sources */,

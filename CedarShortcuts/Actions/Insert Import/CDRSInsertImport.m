@@ -1,18 +1,22 @@
 #import "CDRSInsertImport.h"
 #import "CDRSAlert.h"
+#import "CDRSSymbolImportValidator.h"
 
 @interface CDRSInsertImport ()
 @property (nonatomic, strong) XC(IDESourceCodeEditor) editor;
 @property (nonatomic, strong) XC(DVTSourceTextStorage) textStorage;
+@property (nonatomic, strong) CDRSSymbolImportValidator *symbolValidator;
 @end
 
 @implementation CDRSInsertImport
 
 static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 
-- (id)initWithEditor:(XC(IDESourceCodeEditor))editor {
+- (id)initWithEditor:(XC(IDESourceCodeEditor))editor
+     symbolValidator:(CDRSSymbolImportValidator *)symbolValidator {
     if (self = [super init]) {
         self.editor = editor;
+        self.symbolValidator = symbolValidator;
         self.textStorage = self.editor.sourceCodeDocument.textStorage;
     }
     return self;
@@ -49,8 +53,8 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
     NSUInteger cursorIndex = currentLocation.characterRange.location;
     NSUInteger expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:NO];
 
-    id symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
-    if (symbol == nil) {
+    NSString *symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
+    if (![self.symbolValidator isValidSymbol:symbol]) {
         expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:YES];
         symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
     }

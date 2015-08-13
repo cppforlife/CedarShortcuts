@@ -2,12 +2,14 @@
 #import "CDRSInsertImport.h"
 #import "CDRSXcode.h"
 #import "CDRSFocusUnfocusSpec.h"
+#import "CDRSSymbolImportValidator.h"
 
 @implementation CDRSEditMenu
 
 - (void)insertImport:(id)sender {
     id editor = [CDRSXcode currentEditor];
-    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor];
+    CDRSSymbolImportValidator *symbolValidator = [[CDRSSymbolImportValidator alloc] init];
+    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor symbolValidator:symbolValidator];
     [insertImporter insertImport];
 }
 
