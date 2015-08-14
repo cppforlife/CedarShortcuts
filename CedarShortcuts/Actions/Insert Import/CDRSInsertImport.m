@@ -26,6 +26,11 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 - (void)insertImport {
     NSString *symbol = self._symbolUnderCursor;
 
+    if (!symbol) {
+        [CDRSAlert flashMessage:@"Couldn't find something to import\n\t:-{"];
+        return;
+    }
+
     if ([self _isSymbolImported:symbol]) {
         [CDRSAlert flashMessage:@"#import declaration exists"];
     } else {
@@ -59,7 +64,11 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
         symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
     }
 
-    return symbol;
+    if ([self.symbolValidator isValidSymbol:symbol]) {
+        return symbol;
+    }
+
+    return nil;
 }
 
 - (NSString *)_importDeclaration:(NSString *)symbol {
