@@ -76,4 +76,12 @@ static const unichar keyEquivalentUnichar = NSDownArrowFunctionKey;
     item.keyEquivalentModifierMask = NSShiftKeyMask | NSControlKeyMask | NSCommandKeyMask;
     return item;
 }
+
+#pragma mark - NSObject
+
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
 @end

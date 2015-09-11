@@ -95,4 +95,12 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
         withString:declaration
         withUndoManager:undoManager];
 }
+
+#pragma mark - NSObject
+
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
 @end
