@@ -37,7 +37,7 @@
 		F74FD2E71B3FB8E80098B9F8 /* CDRSXcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DB4E4216227C4E00743C95 /* CDRSXcode.m */; };
 		F74FD2E81B3FB90A0098B9F8 /* CDRSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CADEBF1626A78700A0B674 /* CDRSUtils.m */; };
 		F74FD2E91B3FB9820098B9F8 /* CDRSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 961B3EC816B65E94001A27ED /* CDRSAlert.m */; };
-		F7BA62301B223369005B99AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA622F1B223369005B99AF /* main.m */; };
+		F7BA62301B223369005B99AF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7BA622F1B223369005B99AF /* main.mm */; };
 		F7BA62731B22BF8E005B99AF /* Cedar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BA625A1B2233D0005B99AF /* Cedar.framework */; };
 		F7BA62781B22C329005B99AF /* CDRSOpenAlternate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */; };
 		F7BA627B1B22C3A9005B99AF /* CDRSFileExtensionValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BA627A1B22C3A9005B99AF /* CDRSFileExtensionValidator.m */; };
@@ -193,7 +193,7 @@
 		F74FD2E21B3FB57A0098B9F8 /* CDRSOpenAlternateMenuSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRSOpenAlternateMenuSpec.mm; sourceTree = "<group>"; };
 		F7BA62281B223369005B99AF /* Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7BA622B1B223369005B99AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7BA622F1B223369005B99AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F7BA622F1B223369005B99AF /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		F7BA62491B2233D0005B99AF /* Cedar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cedar.xcodeproj; path = Cedar/Cedar.xcodeproj; sourceTree = "<group>"; };
 		F7BA62761B22C329005B99AF /* CDRSOpenAlternate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRSOpenAlternate.h; sourceTree = "<group>"; };
 		F7BA62771B22C329005B99AF /* CDRSOpenAlternate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRSOpenAlternate.m; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				F7BA622B1B223369005B99AF /* Info.plist */,
-				F7BA622F1B223369005B99AF /* main.m */,
+				F7BA622F1B223369005B99AF /* main.mm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -681,7 +681,7 @@
 				F74FD2E91B3FB9820098B9F8 /* CDRSAlert.m in Sources */,
 				F74FD2E81B3FB90A0098B9F8 /* CDRSUtils.m in Sources */,
 				F74FD2E31B3FB57A0098B9F8 /* CDRSOpenAlternateMenuSpec.mm in Sources */,
-				F7BA62301B223369005B99AF /* main.m in Sources */,
+				F7BA62301B223369005B99AF /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
