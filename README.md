@@ -22,6 +22,10 @@ For example: Cedar and Quick allow you to focus on examples with `fit/fdescribe`
     <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>  
     Insert `#import` declaration for a symbol under the cursor.  
     (Edit > Insert Import)
+    
+    <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd>  
+    Insert `@class` forward-declaration for a symbol under the cursor.  
+    (Edit > Forward declare class)
 
     <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Cmd</kbd> + ↓
     Alternate between Spec and implementation in current editor.  
