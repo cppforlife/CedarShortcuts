@@ -14,10 +14,10 @@
 
 @implementation CDRSFocusUnfocusSpec
 
-- (id)initWithEditor:(XC(IDESourceCodeEditor))editor
-     ignorablePrefix:(NSString *)ignorablePrefix
-         prefixToAdd:(NSString *)prefixToAdd
-       functionNames:(NSArray *)functionNames {
+- (instancetype)initWithEditor:(XC(IDESourceCodeEditor))editor
+               ignorablePrefix:(NSString *)ignorablePrefix
+                   prefixToAdd:(NSString *)prefixToAdd
+                 functionNames:(NSArray *)functionNames {
 
     if (self = [super init]) {
         self.editor = editor;

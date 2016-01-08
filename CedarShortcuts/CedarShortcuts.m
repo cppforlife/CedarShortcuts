@@ -7,11 +7,14 @@
 #import "CDRSOpenAlternate.h"
 
 @interface CedarShortcuts ()
-@property (nonatomic, strong) CDRSRunFocusedMenu *runFocusedMenu;
-@property (nonatomic, strong) CDRSOpenAlternateMenu *openAlternateMenu;
-@property (nonatomic, strong) CDRSEditMenu *editMenu;
-@property (nonatomic, strong) CDRSViewMenu *viewMenu;
+
+@property (nonatomic) CDRSRunFocusedMenu *runFocusedMenu;
+@property (nonatomic) CDRSOpenAlternateMenu *openAlternateMenu;
+@property (nonatomic) CDRSEditMenu *editMenu;
+@property (nonatomic) CDRSViewMenu *viewMenu;
+
 @end
+
 
 @implementation CedarShortcuts
 
@@ -24,7 +27,7 @@
     });
 }
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         [[NSNotificationCenter defaultCenter]
              addObserver:self
