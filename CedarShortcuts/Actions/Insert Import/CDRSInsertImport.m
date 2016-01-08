@@ -1,12 +1,16 @@
 #import "CDRSInsertImport.h"
-#import "CDRSAlert.h"
 #import "CDRSSymbolImportValidator.h"
+#import "CDRSAlert.h"
+
 
 @interface CDRSInsertImport ()
-@property (nonatomic, strong) XC(IDESourceCodeEditor) editor;
-@property (nonatomic, strong) XC(DVTSourceTextStorage) textStorage;
-@property (nonatomic, strong) CDRSSymbolImportValidator *symbolValidator;
+
+@property (nonatomic) XC(IDESourceCodeEditor) editor;
+@property (nonatomic) XC(DVTSourceTextStorage) textStorage;
+@property (nonatomic) CDRSSymbolImportValidator *symbolValidator;
+
 @end
+
 
 @implementation CDRSInsertImport
 
@@ -22,28 +26,27 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
     return self;
 }
 
-
 - (void)insertImport {
-    NSString *symbol = self._symbolUnderCursor;
+    NSString *symbol = self.symbolUnderCursor;
 
     if (!symbol) {
         [CDRSAlert flashMessage:@"Couldn't find something to import\n\t:-{"];
         return;
     }
 
-    if ([self _isSymbolImported:symbol]) {
+    if ([self isSymbolImported:symbol]) {
         [CDRSAlert flashMessage:@"#import declaration exists"];
     } else {
-        NSString *declaration = [self _importDeclaration:symbol];
-        NSUInteger index = [self _nextImportDeclarationIndex];
-        [self _insertImportDeclaration:declaration atIndex:index];
+        NSString *declaration = [self importDeclaration:symbol];
+        NSUInteger index = [self nextImportDeclarationIndex];
+        [self insertImportDeclaration:declaration atIndex:index];
         [CDRSAlert flashMessage:@"Added #import declaration"];
     }
 }
 
 #pragma mark - Import declaration
 
-- (BOOL)_isSymbolImported:(NSString *)symbol {
+- (BOOL)isSymbolImported:(NSString *)symbol {
     NSString *fullSymbol = [NSString stringWithFormat:importDeclarationFormatString, symbol];
     for (XC(DVTSourceLandmarkItem) importLocation in self.textStorage.importLandmarkItems) {
         if ([importLocation.name rangeOfString:fullSymbol].location != NSNotFound)
@@ -52,33 +55,37 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
     return NO;
 }
 
-- (NSString *)_symbolUnderCursor {
+- (NSString *)symbolUnderCursor {
     XC(DVTTextDocumentLocation) currentLocation =
         self.editor.currentSelectedDocumentLocations.lastObject;
     NSUInteger cursorIndex = currentLocation.characterRange.location;
     NSUInteger expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:NO];
 
-    NSString *symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
-    if (![self.symbolValidator isValidSymbol:symbol]) {
+    NSRange cursorRange = NSMakeRange(expressionIndex, 0);
+    XC(DVTSourceExpression) expression = [self.editor _expressionAtCharacterIndex:cursorRange];
+
+    if (![self.symbolValidator isValidSymbol:expression.symbolString]) {
         expressionIndex = [self.textStorage nextExpressionFromIndex:cursorIndex forward:YES];
-        symbol = [self.editor _expressionAtCharacterIndex:NSMakeRange(expressionIndex, 0)].symbolString;
+        cursorRange = NSMakeRange(expressionIndex, 0);
+
+        expression = [self.editor _expressionAtCharacterIndex:cursorRange];
     }
 
-    if ([self.symbolValidator isValidSymbol:symbol]) {
-        return symbol;
+    if ([self.symbolValidator isValidSymbol:expression.symbolString]) {
+        return expression.symbolString;
     }
 
     return nil;
 }
 
-- (NSString *)_importDeclaration:(NSString *)symbol {
+- (NSString *)importDeclaration:(NSString *)symbol {
     NSString *importDeclaration = [NSString stringWithFormat:importDeclarationFormatString, symbol];
     return [NSString stringWithFormat:@"#%@\n", importDeclaration];
 }
 
 #pragma mark - Document editing
 
-- (NSUInteger)_nextImportDeclarationIndex {
+- (NSUInteger)nextImportDeclarationIndex {
     XC(DVTSourceLandmarkItem) lastImportLocation =
         self.textStorage.importLandmarkItems.lastObject;
     if (lastImportLocation) {
@@ -88,7 +95,7 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
     return 0;
 }
 
-- (void)_insertImportDeclaration:(NSString *)declaration atIndex:(NSUInteger)index {
+- (void)insertImportDeclaration:(NSString *)declaration atIndex:(NSUInteger)index {
     id undoManager = self.editor.sourceCodeDocument.undoManager;
     [self.textStorage
         replaceCharactersInRange:NSMakeRange(index, 0)

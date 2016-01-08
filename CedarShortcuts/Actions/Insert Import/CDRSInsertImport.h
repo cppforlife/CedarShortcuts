@@ -14,6 +14,8 @@
 @end
 
 @interface CDRSInsertImport (UnavailableInitializers)
+
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
+
 @end
