@@ -6,7 +6,7 @@
 #import "CDRSSymbolImportChecker.h"
 
 static NSString * const forwardDeclarationFormatString = @"@class %@;";
-static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
+static NSString * const importDeclarationFormatString = @"#import \"%@.h\"";
 
 @implementation CDRSEditMenu
 
