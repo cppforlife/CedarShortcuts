@@ -22,6 +22,10 @@ describe(@"CDRSSymbolImportValidator", ^{
             it(@"should not treat @protocol as a valid symbol", ^{
                 [subject isValidSymbol:@"@protocol"] should be_falsy;
             });
+
+            it(@"should not treat lowercase strings as valid symbols", ^{
+                [subject isValidSymbol:@"ruhRoh"] should be_falsy;
+            });
         });
 
         context(@"valid symbols", ^{

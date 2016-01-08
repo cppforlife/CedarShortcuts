@@ -11,6 +11,13 @@
         return NO;
     }
 
+    unichar firstCharater = [symbolString characterAtIndex:0];
+    NSCharacterSet *uppercaseCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
+    BOOL isUpcased = [uppercaseCharacterSet characterIsMember:firstCharater];
+    if (!isUpcased) {
+        return NO;
+    }
+
     return YES;
 }
 
