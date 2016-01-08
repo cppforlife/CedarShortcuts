@@ -3,13 +3,47 @@
 #import "CDRSXcode.h"
 #import "CDRSFocusUnfocusSpec.h"
 #import "CDRSSymbolImportValidator.h"
+#import "CDRSSymbolImportChecker.h"
+
+static NSString * const forwardDeclarationFormatString = @"@class %@;";
+static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 
 @implementation CDRSEditMenu
 
+- (void)attach {
+    NSMenu *editMenu = [CDRSXcode menuWithTitle:@"Edit"];
+    [editMenu addItem:NSMenuItem.separatorItem];
+    [editMenu addItem:[self insertImportItem]];
+    [editMenu addItem:[self addForwardDeclarationItem]];
+    [editMenu addItem:[self focusSpecItem]];
+    [editMenu addItem:[self pendSpecItem]];
+}
+
+#pragma mark - Actions
+
 - (void)insertImport:(id)sender {
-    id editor = [CDRSXcode currentEditor];
+    XC(IDESourceCodeEditor) editor = [CDRSXcode currentEditor];
+    XC(DVTSourceTextStorage) textStorage = editor.sourceCodeDocument.textStorage;
     CDRSSymbolImportValidator *symbolValidator = [[CDRSSymbolImportValidator alloc] init];
-    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor symbolValidator:symbolValidator];
+    CDRSSymbolImportChecker *symbolChecker = [[CDRSSymbolImportChecker alloc] initWithTextStorage:textStorage
+                                                                                     formatString:importDeclarationFormatString];
+    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor
+                                                                symbolValidator:symbolValidator
+                                                                  symbolChecker:symbolChecker
+                                                             importFormatString:importDeclarationFormatString];
+    [insertImporter insertImport];
+}
+
+- (void)addForwardDeclaration:(id)sender {
+    XC(IDESourceCodeEditor) editor = [CDRSXcode currentEditor];
+    XC(DVTSourceTextStorage) textStorage = editor.sourceCodeDocument.textStorage;
+    CDRSSymbolImportValidator *symbolValidator = [[CDRSSymbolImportValidator alloc] init];
+    CDRSSymbolImportChecker *symbolChecker = [[CDRSSymbolImportChecker alloc] initWithTextStorage:textStorage
+                                                                                     formatString:forwardDeclarationFormatString];
+    CDRSInsertImport *insertImporter = [[CDRSInsertImport alloc] initWithEditor:editor
+                                                                symbolValidator:symbolValidator
+                                                                  symbolChecker:symbolChecker
+                                                             importFormatString:forwardDeclarationFormatString];
     [insertImporter insertImport];
 }
 
@@ -31,17 +65,9 @@
     [specFocuser focusOrUnfocusSpec];
 }
 
-- (void)attach {
-    NSMenu *editMenu = [CDRSXcode menuWithTitle:@"Edit"];
-    [editMenu addItem:NSMenuItem.separatorItem];
-    [editMenu addItem:self._insertImportItem];
-    [editMenu addItem:self._focusSpecItem];
-    [editMenu addItem:self._pendSpecItem];
-}
-
 #pragma mark - Menu items
 
-- (NSMenuItem *)_insertImportItem {
+- (NSMenuItem *)insertImportItem {
     NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Insert #import";
     item.target = self;
@@ -51,7 +77,17 @@
     return item;
 }
 
-- (NSMenuItem *)_focusSpecItem {
+- (NSMenuItem *)addForwardDeclarationItem {
+    NSMenuItem *item = [[NSMenuItem alloc] init];
+    item.title = @"Forward declare class";
+    item.target = self;
+    item.action = @selector(addForwardDeclaration:);
+    item.keyEquivalent = @"c";
+    item.keyEquivalentModifierMask = NSControlKeyMask | NSAlternateKeyMask;
+    return item;
+}
+
+- (NSMenuItem *)focusSpecItem {
     NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Focus spec under cursor";
     item.target = self;
@@ -61,7 +97,7 @@
     return item;
 }
 
-- (NSMenuItem *)_pendSpecItem {
+- (NSMenuItem *)pendSpecItem {
     NSMenuItem *item = [[NSMenuItem alloc] init];
     item.title = @"Pend spec under cursor";
     item.target = self;

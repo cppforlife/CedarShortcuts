@@ -1,13 +1,18 @@
 #import "CDRSXcodeInterfaces.h"
 
 @class CDRSSymbolImportValidator;
+@class CDRSSymbolImportChecker;
+
 
 @interface CDRSInsertImport : NSObject
 
 @property (nonatomic, readonly) CDRSSymbolImportValidator *symbolValidator;
+@property (nonatomic, readonly) CDRSSymbolImportChecker *symbolChecker;
 
 - (instancetype)initWithEditor:(XC(IDESourceCodeEditor))editor
-               symbolValidator:(CDRSSymbolImportValidator *)symbolValidator NS_DESIGNATED_INITIALIZER;
+               symbolValidator:(CDRSSymbolImportValidator *)symbolValidator
+                 symbolChecker:(CDRSSymbolImportChecker *)symbolChecker
+            importFormatString:(NSString *)importFormatString NS_DESIGNATED_INITIALIZER;
 
 - (void)insertImport;
 

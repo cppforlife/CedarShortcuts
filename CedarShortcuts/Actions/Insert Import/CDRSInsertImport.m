@@ -1,6 +1,7 @@
 #import "CDRSInsertImport.h"
 #import "CDRSSymbolImportValidator.h"
 #import "CDRSAlert.h"
+#import "CDRSSymbolImportChecker.h"
 
 
 @interface CDRSInsertImport ()
@@ -8,20 +9,24 @@
 @property (nonatomic) XC(IDESourceCodeEditor) editor;
 @property (nonatomic) XC(DVTSourceTextStorage) textStorage;
 @property (nonatomic) CDRSSymbolImportValidator *symbolValidator;
+@property (nonatomic) CDRSSymbolImportChecker *symbolChecker;
+@property (nonatomic, copy) NSString *importFormatString;
 
 @end
 
 
 @implementation CDRSInsertImport
 
-static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
-
-- (id)initWithEditor:(XC(IDESourceCodeEditor))editor
-     symbolValidator:(CDRSSymbolImportValidator *)symbolValidator {
+- (instancetype)initWithEditor:(XC(IDESourceCodeEditor))editor
+               symbolValidator:(CDRSSymbolImportValidator *)symbolValidator
+                 symbolChecker:(CDRSSymbolImportChecker *)symbolChecker
+            importFormatString:(NSString *)importFormatString {
     if (self = [super init]) {
-        self.editor = editor;
-        self.symbolValidator = symbolValidator;
-        self.textStorage = self.editor.sourceCodeDocument.textStorage;
+        _editor = editor;
+        _symbolValidator = symbolValidator;
+        _textStorage = editor.sourceCodeDocument.textStorage;
+        _symbolChecker = symbolChecker;
+        _importFormatString = importFormatString;
     }
     return self;
 }
@@ -30,7 +35,7 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
     NSString *symbol = self.symbolUnderCursor;
 
     if (!symbol) {
-        [CDRSAlert flashMessage:@"Couldn't find something to import\n\t:-{"];
+        [CDRSAlert flashMessage:@"Couldn't find something to import"];
         return;
     }
 
@@ -47,12 +52,7 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 #pragma mark - Import declaration
 
 - (BOOL)isSymbolImported:(NSString *)symbol {
-    NSString *fullSymbol = [NSString stringWithFormat:importDeclarationFormatString, symbol];
-    for (XC(DVTSourceLandmarkItem) importLocation in self.textStorage.importLandmarkItems) {
-        if ([importLocation.name rangeOfString:fullSymbol].location != NSNotFound)
-            return YES;
-    }
-    return NO;
+    return [self.symbolChecker isSymbolImported:symbol];
 }
 
 - (NSString *)symbolUnderCursor {
@@ -79,8 +79,8 @@ static NSString * const importDeclarationFormatString = @"import \"%@.h\"";
 }
 
 - (NSString *)importDeclaration:(NSString *)symbol {
-    NSString *importDeclaration = [NSString stringWithFormat:importDeclarationFormatString, symbol];
-    return [NSString stringWithFormat:@"#%@\n", importDeclaration];
+    NSString *importDeclaration = [NSString stringWithFormat:self.importFormatString, symbol];
+    return [NSString stringWithFormat:@"%@\n", importDeclaration];
 }
 
 #pragma mark - Document editing
