@@ -1,3 +1,10 @@
+Deprecated
+==========
+
+This Xcode Plugin (and all others) cannot work with Xcode 8 and above. If you care deeply about Xcode plugins such as this, please (PLEASE!) file Radars to Apple asking for the XcodeKit API to expand to allow support for extensions like this one.
+
+CedarShortcuts
+--------------
 CedarShortcuts is an Xcode plugin that adds handy shortcuts for [Cedar](https://github.com/pivotal/cedar) or [Quick](https://github.com/quick/quick). 
 
 For example: Cedar and Quick allow you to focus on examples with `fit/fdescribe` but with this plugin you can select `it/describe` with your cursor and use a shortcut instead.
